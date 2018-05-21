@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <!-- START LOGO -->
-                    <div class="logo"> <a href="index-9.html">KATZ</a> </div>
+                    <div class="logo"> <a href="index-9.php">KATZ</a> </div>
                     <!-- END LOGO -->
                     <div class="mobile-nav"></div>
                 </div>
@@ -60,12 +60,12 @@
                         <div class="collapse navbar-collapse">
                             <div class="navigation">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="index-9.html">Home</a></li>
-                                    <li><a href="portfolio-three.html">Proofs</a></li>
-                                    <li><a href="blog-grid.html">Blogs</a></li>
-                                    <li><a href="service-3.html">Shop</a></li>
-                                    <li><a href="about-1.html">About</a></li>
-                                    <li><a href="contact-us.html">Contact Us</a></li>
+                                    <li><a href="index-9.php">Home</a></li>
+                                    <li><a href="portfolio-three.php">Proofs</a></li>
+                                    <li><a href="blog-grid.php">Blogs</a></li>
+                                    <li><a href="service-3.php">Shop</a></li>
+                                    <li><a href="about-1.php">About</a></li>
+                                    <li><a href="contact-us.php">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -97,72 +97,72 @@
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single_blog_item_area center">
-                        <a href="blog-single.html"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
+                        <a href="blog-single.php"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
                         <ul class="meta"> 
                                             <li>By <span class="color font-w-6">AKSH</span></li>
                                             <li>Dated <span>1 Jan 2018</span></li>
                                         </ul>
-                        <h3><a href="blog-single.html">Blog article with default image</a></h3>
+                        <h3><a href="blog-single.php">Blog article with default image</a></h3>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
                     </div>
                 </div><!-- col-md-4-->
                 
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single_blog_item_area center">
-                        <a href="blog-single.html"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
+                        <a href="blog-single.php"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
                         <ul class="meta"> 
                                             <li>By <span class="color font-w-6">AKSH</span></li>
                                             <li>Dated <span>1 Jan 2018</span></li>
                                         </ul>
-                        <h3><a href="blog-single.html">Blog article with default image</a></h3>
+                        <h3><a href="blog-single.php">Blog article with default image</a></h3>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
                     </div>
                 </div><!-- col-md-4-->
                 
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single_blog_item_area center">
-                        <a href="blog-single.html"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
+                        <a href="blog-single.php"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
                         <ul class="meta"> 
                                             <li>By <span class="color font-w-6">AKSH</span></li>
                                             <li>Dated <span>1 Jan 2018</span></li>
                                         </ul>
-                        <h3><a href="blog-single.html">Blog article with default image</a></h3>
+                        <h3><a href="blog-single.php">Blog article with default image</a></h3>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
                     </div>
                 </div><!-- col-md-4-->
 
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single_blog_item_area center">
-                        <a href="blog-single.html"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
+                        <a href="blog-single.php"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
                         <ul class="meta"> 
                                             <li>By <span class="color font-w-6">AKSH</span></li>
                                             <li>Dated <span>1 Jan 2018</span></li>
                                         </ul>
-                        <h3><a href="blog-single.html">Blog article with default image</a></h3>
+                        <h3><a href="blog-single.php">Blog article with default image</a></h3>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
                     </div>
                 </div><!-- col-md-4-->
 
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single_blog_item_area center">
-                        <a href="blog-single.html"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
+                        <a href="blog-single.php"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
                         <ul class="meta"> 
                                             <li>By <span class="color font-w-6">AKSH</span></li>
                                             <li>Dated <span>1 Jan 2018</span></li>
                                         </ul>
-                        <h3><a href="blog-single.html">Blog article with default image</a></h3>
+                        <h3><a href="blog-single.php">Blog article with default image</a></h3>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
                     </div>
                 </div><!-- col-md-4-->
 
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single_blog_item_area center">
-                        <a href="blog-single.html"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
+                        <a href="blog-single.php"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
                         <ul class="meta"> 
                                             <li>By <span class="color font-w-6">AKSH</span></li>
                                             <li>Dated <span>1 Jan 2018</span></li>
                                         </ul>
-                        <h3><a href="blog-single.html">Blog article with default image</a></h3>
+                        <h3><a href="blog-single.php">Blog article with default image</a></h3>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
                     </div>
                 </div><!-- col-md-4-->
@@ -173,7 +173,7 @@
                     <ul class="pagination pagination-lg">
                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
                         
-                        <li class="page-item"><a href="blog-grid.html">2</a></li>
+                        <li class="page-item"><a href="blog-grid.php">2</a></li>
 
                         <li class="page-item">
                             <a href="blog-grid-2.html"><i class="fa fa-arrow-right"></i></a>

@@ -47,7 +47,7 @@
       <div class="row">
         <div class="col-md-3">
           <!-- START LOGO -->
-          <div class="logo"> <a href="index-9.html">KATZ</a> </div>
+          <div class="logo"> <a href="index-9.php">KATZ</a> </div>
           <!-- END LOGO -->
           <div class="mobile-nav"></div>
         </div>
@@ -60,12 +60,12 @@
             <div class="collapse navbar-collapse">
               <div class="navigation">
                 <ul class="nav navbar-nav">
-                  <li><a href="index-9.html">Home</a></li>
-                  <li><a href="portfolio-three.html">Proofs</a></li>
-                  <li><a href="blog-grid.html">Blogs</a></li>
-                  <li><a href="service-3.html">Shop</a></li>
-                  <li><a href="about-1.html">About</a></li>
-                  <li><a href="contact-us.html">Contact Us</a></li>
+                  <li><a href="index-9.php">Home</a></li>
+                  <li><a href="portfolio-three.php">Proofs</a></li>
+                  <li><a href="blog-grid.php">Blogs</a></li>
+                  <li><a href="service-3.php">Shop</a></li>
+                  <li><a href="about-1.php">About</a></li>
+                  <li><a href="contact-us.php">Contact</a></li>
                 </ul>
               </div>
             </div>
@@ -108,39 +108,39 @@
         </div>
         <div class="section_3 center">
           <!-- Single Service Start -->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="item"> <i class="fa fa-camera-retro pt-20"></i>
+                    <h4>Photography</h4>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="item"> <i class="fa fa-film pt-20"></i>
+                    <h4>Cinematography</h4>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
+                </div>
+            </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="item"> <i class="fa fa-desktop pt-20"></i>
-              <h4>Web Design</h4>
+              <h4>Blogs</h4>
               <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="item"> <i class="fa fa-wordpress pt-20"></i>
-              <h4>Web Development</h4>
+            <div class="item"> <i class="fa fa-shopping-cart pt-20"></i>
+              <h4>Merchandising</h4>
               <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="item"> <i class="fa fa-mobile-phone pt-20"></i>
-              <h4>Mobile App Development</h4>
+            <div class="item"> <i class="fa fa-youtube pt-20"></i>
+              <h4>Youtube Tutorials</h4>
               <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="item"> <i class="fa fa-gamepad pt-20"></i>
-              <h4>Online Marketing</h4>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="item"> <i class="fa fa-camera-retro pt-20"></i>
-              <h4>Photography</h4>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="item"> <i class="fa fa-shield pt-20"></i>
-              <h4>SEO</h4>
+            <div class="item"> <i class="fa fa-briefcase pt-20"></i>
+              <h4>Photography School</h4>
               <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
             </div>
           </div>

@@ -47,7 +47,7 @@
       <div class="row">
         <div class="col-md-3">
           <!-- START LOGO -->
-          <div class="logo"> <a href="index-9.html">KATZ</a> </div>
+          <div class="logo"> <a href="index-9.php">KATZ</a> </div>
           <!-- END LOGO -->
           <div class="mobile-nav"></div>
         </div>
@@ -60,12 +60,12 @@
             <div class="collapse navbar-collapse">
               <div class="navigation">
                 <ul class="nav navbar-nav">
-                  <li><a href="index-9.html">Home</a></li>
-                  <li><a href="portfolio-three.html">Proofs</a></li>
-                  <li><a href="blog-grid.html">Blogs</a></li>
-                  <li><a href="service-3.html">Shop</a></li>
-                  <li><a href="about-1.html">About</a></li>
-                  <li><a href="contact-us.html">Contact Us</a></li>
+                  <li><a href="index-9.php">Home</a></li>
+                  <li><a href="portfolio-three.php">Proofs</a></li>
+                  <li><a href="blog-grid.php">Blogs</a></li>
+                  <li><a href="service-3.php">Shop</a></li>
+                  <li><a href="about-1.php">About</a></li>
+                  <li><a href="contact-us.php">Contact Us</a></li>
                 </ul>
               </div>
             </div>
@@ -90,14 +90,122 @@
     </div>
   </div>
 </header>
-<div class="clearfix"></div>
 <!-- Start Contact-section area -->
+<div class="clearfix"></div>
+<section id="services_3" class="services_3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-title ptb-10">
+          <h2 class="font-w-8 ln-h-40"><span class="color">OUR</span> FRIENDLY PRICING <BR>
+            CATALOG</h2>
+          <p class="font-w-6">Our prices are designed to fit your budget and theme</p>
+        </div>
+        <div class="section_3 center">
+          <!-- Single Service Start -->
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="item"> <i class="fa fa-camera-retro pt-20"></i>
+              <h4>
+                STANDARD PACKAGE – KSHS 120,000.00</h4>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="item"> <i class="fa fa-camera-retro pt-20"></i>
+              <h4>DESTINATION WEDDINGS PACKAGE – KSHS 150,000.00</h4>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="item"> <i class="fa fa-camera-retro pt-20"></i>
+              <h4>ENGAGEMENT / TRADITIONAL WEDDINGS – KSHS 15,000 PER HOUR</h4>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="item"> <i class="fa fa-film pt-20"></i>
+              <h4>WEDDING CINEMATOGRAPHY - KSHS 20,000 PER HOUR</h4>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="item"> <i class="fa fa-shopping-cart pt-20"></i>
+              <h4>YOUNG PHOTOBOOK – | 40 Pages Kshs 60,000 | 60 Pages Kshs 70,000 |</h4>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="item"> <i class="fa fa-shopping-cart pt-20"></i>
+              <h4>ART PHOTOBOOK – | 20 Pages Kshs 30,000 | 40 Pages Kshs 40,000 | 60 Pages Kshs 50,000 |</h4>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
+            </div>
+          </div>
+          <!-- Single Service End -->
+          <!-- Single Service Start -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="clearfix"> </div>
+<section id="book-section" class="contact-us-section pb-30">
+  <div class="container">
+    <!--Sec Title-->
+    <div class="section-title m-0 pb-28">
+      <h2 class="font-w-8 center"><span class="color">C</span>HECK OUR AVAILABILITY</h2>
+      <p class="font-w-6 center">We'll be sure to get back with timely feedback soon</p>
+    </div>
+    <div class="section contact-us">
+      <div class="container">
+        <div class="outer-box">
+          <!-- Contact Form Start -->
+          <div class="form-box clearfix">
+            <form id="bookingForm" data-toggle="validator" class="shake scroll-reveal">
+              <div class="form-group col-sm-6">
+                <input type="text" class="form-control" id="name" placeholder="Your name" required data-error="Name missing">
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group col-sm-6">
+                <input type="email" class="form-control" id="email" placeholder="Your email" required data-error="Email missing">
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group col-sm-6">
+                <input type="number" class="form-control" id="phoneNo" placeholder="Your phone number" required data-error="Phone Number missing">
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group col-sm-12">
+                <input type="number" class="form-control" id="shootType" placeholder="Shoot type" required data-error="Shoot type missing">
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group col-sm-6">
+                <input type="date" class="form-control" id="date" placeholder="Shoot Date" required data-error="Date missing">
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group col-sm-6">
+                <input type="number" class="form-control" id="time" placeholder="Hours" required data-error="Hours missing">
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group col-sm-12">
+                <textarea id="message" class="form-control" rows="6" placeholder="Please write additional details of how you would like your shoot to be" required></textarea>
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="col-sm-12"> <a class="btn" href="#">Submit Booking</a>
+                <div id="msgSubmit"></div>
+              </div>
+            </form>
+          </div>
+          <!-- Contact Form End -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section id="contact-us-section" class="contact-us-section pb-30">
   <div class="container">
     <!--Sec Title-->
     <div class="section-title m-0 pb-28">
       <h2 class="font-w-8 center"><span class="color">W</span>E'D LIKE TO HEAR FROM YOU</h2>
-      <p class="font-w-6 center">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</p>
+      <p class="font-w-6 center">You can drop by our offices, email us or even give us a call and there'll be a friendly voice at the end of the line</p>
     </div>
     <div class="section contact-us">
       <div class="container">
@@ -116,27 +224,6 @@
               </li>
             </ul>
           </div>
-          <!-- Contact Form Start -->
-          <div class="form-box clearfix">
-            <form id="contactform" data-toggle="validator" class="shake scroll-reveal">
-              <div class="form-group col-sm-6">
-                <input type="text" class="form-control" id="name" placeholder="Your name" required data-error="Name missing">
-                <div class="help-block with-errors"></div>
-              </div>
-              <div class="form-group col-sm-6">
-                <input type="email" class="form-control" id="email" placeholder="Your email" required>
-                <div class="help-block with-errors"></div>
-              </div>
-              <div class="form-group col-sm-12">
-                <textarea id="message" class="form-control" rows="6" placeholder="Write your message here" required></textarea>
-                <div class="help-block with-errors"></div>
-              </div>
-              <div class="col-sm-12"> <a class="btn" href="#">Send Message</a>
-                <div id="msgSubmit"></div>
-              </div>
-            </form>
-          </div>
-          <!-- Contact Form End -->
         </div>
       </div>
     </div>

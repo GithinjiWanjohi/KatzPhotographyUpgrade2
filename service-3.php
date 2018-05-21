@@ -47,7 +47,7 @@
       <div class="row">
         <div class="col-md-3">
           <!-- START LOGO -->
-          <div class="logo"> <a href="index-9.html">KATZ</a> </div>
+          <div class="logo"> <a href="index-9.php">KATZ</a> </div>
           <!-- END LOGO -->
           <div class="mobile-nav"></div>
         </div>
@@ -60,12 +60,12 @@
             <div class="collapse navbar-collapse">
               <div class="navigation">
                 <ul class="nav navbar-nav">
-                  <li><a href="index-9.html">Home</a></li>
-                  <li><a href="portfolio-three.html">Proofs</a></li>
-                  <li><a href="blog-grid.html">Blogs</a></li>
+                  <li><a href="index-9.php">Home</a></li>
+                  <li><a href="portfolio-three.php">Proofs</a></li>
+                  <li><a href="blog-grid.php">Blogs</a></li>
                   <li><a href="service-3.html">Shop</a></li>
-                  <li><a href="about-1.html">About</a></li>
-                  <li><a href="contact-us.html">Contact Us</a></li>
+                  <li><a href="about-1.php">About</a></li>
+                  <li><a href="contact-us.php">Contact Us</a></li>
                 </ul>
               </div>
             </div>
