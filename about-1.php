@@ -64,7 +64,7 @@
                   <li><a href="portfolio-three.php">Proofs</a></li>
                   <li><a href="blog-grid.php">Blogs</a></li>
                   <li><a href="service-3.php">Shop</a></li>
-                  <li><a href="contact-us.php">Contact Us</a></li>
+                  <li><a href="contact-us.php">Contact</a></li>
                 </ul>
               </div>
             </div>
