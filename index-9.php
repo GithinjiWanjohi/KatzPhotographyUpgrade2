@@ -69,7 +69,7 @@
                     <li><a href="#"><i class="fa fa-user fa-2x"></i></a>
                         <ul class="drop-down" >
                             <li><a href="signIn.php">Sign In</a></li>
-                            <li><a href="#">Register</a></li>
+                            <li><a href="signUp.php">Register</a></li>
                         </ul> </li>
                 </ul>
               </div>

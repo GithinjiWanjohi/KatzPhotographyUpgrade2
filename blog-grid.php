@@ -66,6 +66,11 @@
                                     <li><a href="service-3.php">Shop</a></li>
                                     <li><a href="about-1.php">About</a></li>
                                     <li><a href="contact-us.php">Contact</a></li>
+                                    <li><a href="#"><i class="fa fa-user fa-2x"></i></a>
+                                        <ul class="drop-down" >
+                                            <li><a href="signIn.php">Sign In</a></li>
+                                            <li><a href="signUp.php">Register</a></li>
+                                        </ul> </li>
                                 </ul>
                             </div>
                         </div>
