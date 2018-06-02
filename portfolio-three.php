@@ -103,7 +103,7 @@
       <div class="col-md-12">
         <div class="section-title">
           <h2 class="font-w-8"><span class="color">O</span>UR STILLS</h2>
-          <p class="font-w-6">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</p>
+          <p class="font-w-6">Proofs from a select range of shoots</p>
         </div>
         <!-- Portfolio Filters -->
         <div class="container">
@@ -112,70 +112,70 @@
               <!-- Portfolio Wrap -->
               <div class="row portfolio-container">
                 <!-- single portfolio -->
-                <div class="col-md-4 col-sm-6 col-xs-12 work php"> <a href="#work_id-1"> <img src="images/gallery-img1.jpg" class="img-responsive" alt="">
+                <div class="col-md-4 col-sm-6 col-xs-12 work php"> <a href="#work_id-1"> <img src="images/wedding.jpg" class="img-responsive" alt="">
                   <div class="work-inner">
                     <div class="work-info">
-                      <h2>Project Title</h2>
+                      <h2>Chantal & Chris</h2>
                       <p>Wedding Shoot</p>
                       <i class="fa fa-search"></i> </div>
                   </div>
                   </a>
-                  <div id="work_id-1" class="mfp-hide work-popup"> <img src="images/gallery-img1.jpg" alt=""> </div>
+                  <div id="work_id-1" class="mfp-hide work-popup"> <img src="images/wedding.jpg" alt=""> </div>
                 </div>
                 <!-- single portfolio -->
-                <div class="col-md-4 col-sm-6 col-xs-12 work wordpress"> <a href="#work_id-2"> <img src="images/gallery-img2.jpg" class="img-responsive" alt="">
+                <div class="col-md-4 col-sm-6 col-xs-12 work wordpress"> <a href="#work_id-2"> <img src="images/babybump.jpg" class="img-responsive" alt="">
                   <div class="work-inner">
                     <div class="work-info">
-                      <h2>Project Title</h2>
+                      <h2>Khaleesi Drogo</h2>
                       <p>Baby Bump</p>
                       <i class="fa fa-search"></i> </div>
                   </div>
                   </a>
-                  <div id="work_id-2" class="mfp-hide work-popup"> <img src="images/gallery-img2.jpg" alt=""> </div>
+                  <div id="work_id-2" class="mfp-hide work-popup"> <img src="images/babybump.jpg.jpg" alt=""> </div>
                 </div>
                 <!-- single portfolio -->
-                <div class="col-md-4 col-sm-6 col-xs-12 work jquery"> <a href="#work_id-3"> <img src="images/gallery-img3.jpg" class="img-responsive" alt="">
+                <div class="col-md-4 col-sm-6 col-xs-12 work jquery"> <a href="#work_id-3"> <img src="images/children.jpg" class="img-responsive" alt="">
                   <div class="work-inner">
                     <div class="work-info">
-                      <h2>Project Title</h2>
+                      <h2>Fun and games</h2>
                       <p>Kids</p>
                       <i class="fa fa-search"></i> </div>
                   </div>
                   </a>
-                  <div id="work_id-3" class="mfp-hide work-popup"> <img src="images/gallery-img3.jpg" alt=""> </div>
+                  <div id="work_id-3" class="mfp-hide work-popup"> <img src="images/children.jpg" alt=""> </div>
                 </div>
                 <!-- single portfolio -->
-                <div class="col-md-4 col-sm-6 col-xs-12 work php"> <a href="#work_id-4"> <img src="images/gallery-img4.jpg" class="img-responsive" alt="">
+                <div class="col-md-4 col-sm-6 col-xs-12 work php"> <a href="#work_id-4"> <img src="images/product.jpg" class="img-responsive" alt="">
                   <div class="work-inner">
                     <div class="work-info">
-                      <h2>Project Title</h2>
+                      <h2>Make the Beat!</h2>
                       <p>Product Photography</p>
                       <i class="fa fa-search"></i> </div>
                   </div>
                   </a>
-                  <div id="work_id-4" class="mfp-hide work-popup"> <img src="images/gallery-img4.jpg" alt=""> </div>
+                  <div id="work_id-4" class="mfp-hide work-popup"> <img src="images/product.jpg" alt=""> </div>
                 </div>
                 <!-- single portfolio -->
-                <div class="col-md-4 col-sm-6 col-xs-12 work css"> <a href="#work_id-5"> <img src="images/gallery-img5.jpg" class="img-responsive" alt="">
+                <div class="col-md-4 col-sm-6 col-xs-12 work css"> <a href="#work_id-5"> <img src="images/sports.jpg" class="img-responsive" alt="">
                   <div class="work-inner">
                     <div class="work-info">
-                      <h2>Project Title</h2>
-                      <p>Indian Wedding</p>
+                      <h2>Make the run!</h2>
+                      <p>Sports</p>
                       <i class="fa fa-search"></i> </div>
                   </div>
                   </a>
-                  <div id="work_id-5" class="mfp-hide work-popup"> <img src="images/gallery-img5.jpg" alt=""> </div>
+                  <div id="work_id-5" class="mfp-hide work-popup"> <img src="images/sports.jpg" alt=""> </div>
                 </div>
                 <!-- single portfolio -->
-                <div class="col-md-4 col-sm-6 col-xs-12 work html"> <a href="#work_id-6"> <img src="images/gallery-img6.jpg" class="img-responsive" alt="">
+                <div class="col-md-4 col-sm-6 col-xs-12 work html"> <a href="#work_id-6"> <img src="images/coffee2.jpg" class="img-responsive" alt="">
                   <div class="work-inner">
                     <div class="work-info">
-                      <h2>Project Title</h2>
-                      <p>Engagement Party</p>
+                      <h2>Make your drink!</h2>
+                      <p>Food</p>
                       <i class="fa fa-search"></i> </div>
                   </div>
                   </a>
-                  <div id="work_id-6" class="mfp-hide work-popup"> <img src="images/gallery-img6.jpg" alt=""> </div>
+                  <div id="work_id-6" class="mfp-hide work-popup"> <img src="images/coffee2.jpg" alt=""> </div>
                 </div>
               </div>
             </div>
