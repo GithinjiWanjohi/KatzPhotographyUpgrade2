@@ -1,3 +1,81 @@
+<?php
+session_start();
+include("include/connection.php");
+
+if(isset($_SESSION['username'])){
+  $userID=$_SESSION['id'];
+}
+
+if(isset($_GET['blog_id'])){
+  $blogID = $_GET['blog_id'];
+  $selectSql=mysqli_query($con, "SELECT * FROM `blog_posts` WHERE `id`= '$blogID'");
+  $rowPost=mysqli_fetch_array($selectSql);
+
+  $blogID=$rowPost['id'];
+  $blogTitle=$rowPost['blog_title'];
+  $blogBody=$rowPost['blog_body'];
+  $timePosted=$rowPost['posted_at'];
+  $userID=$rowPost['user_id'];
+  $categoryID=$rowPost['category_id'];
+  $imagepath=$rowPost['cover_img'];
+
+  if($imagepath=="NONE" || $imagepath==""){
+    $imagepath="cover_images/default.png";
+  }
+
+  $bloggerSql=mysqli_query($con, "SELECT * FROM `users` WHERE `id`= '$userID'");
+  $rowUser=mysqli_fetch_array($bloggerSql);
+  $blogger=$rowUser['username'];
+
+  $categorySql=mysqli_query($con, "SELECT * FROM `category` WHERE `id`= '$categoryID'");
+  $rowCategory=mysqli_fetch_array($categorySql);
+  $category=$rowCategory['category_name'];
+
+  $datetime=explode(" ", $timePosted);
+  $date=$datetime[0];
+  $time=$datetime[1];
+  $rdate=date('d M Y',strtotime($date));
+
+  $commentsSql=mysqli_query($con, "SELECT * FROM `blog_comments` WHERE `blog_id`= '$blogID' ORDER BY `id` ASC");
+  $countComments=mysqli_num_rows($commentsSql);
+  
+
+  if(isset($_POST['post_comment'])){
+    $comment=mysqli_real_escape_string($con, $_POST['comment_content']);
+
+    $insertSql=mysqli_query($con, "INSERT INTO `blog_comments`(`id`, `comment_body`, `posted_at`, `blog_id`, `user_id`) VALUES (NULL,'$comment',NOW(),'$blogID','$userID')");
+  }
+  if(isset($_POST['post_comment_non'])){
+    $email=mysqli_real_escape_string($con, $_POST['email']);
+    $comment=mysqli_real_escape_string($con, $_POST['comment_content']);
+
+    if($email=="" || empty($email)){
+      $email="anonymous";
+    }else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+      echo "enter the correct email format";
+    }else{
+      $checkUserSql=mysqli_query($con, "SELECT * FROM `users` WHERE `username`= '$email'");
+        $countUser = mysqli_num_rows($checkUserSql);
+        if($countUser>0){
+
+        }else{
+          $addUser=mysqli_query($con, "INSERT INTO users(id,username,password,user_level) VALUES (NULL,'$email','password','non-registered-user')");
+        }
+
+      
+      $bloggerSql_non=mysqli_query($con, "SELECT * FROM `users` WHERE `username`= '$email' && `user_level`='non-registered-user'");
+      $rowUser_non=mysqli_fetch_array($bloggerSql_non);
+      $non_user_id=$rowUser_non['id'];
+      $insertSql=mysqli_query($con, "INSERT INTO `blog_comments`(`id`, `comment_body`, `posted_at`, `blog_id`, `user_id`) VALUES (NULL,'$comment',NOW(),'$blogID','$non_user_id')");      
+    }
+    
+  }
+
+
+}else{
+  header("Location: all-blogs.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,20 +180,15 @@
     <div class="row">
       <div class="col-md-8">
         <div class="blog_left_side_area">
-          <div class="blog_pic"> <img src="images/blog_sidebar_area_img_02.jpg" class="img-responsive" alt="images">
-            <h4 class="date_position">20 JAN 2018</h4>
+          <div class="blog_pic"> <img src="<?php echo $imagepath; ?>" class="img-responsive" alt="images">
+            <h4 class="date_position"><?php echo $rdate; ?></h4>
           </div>
           <div class="blog_left_single_content">
-            <h3><a href="#">GET THE BEST QUOTE FOR YOUR SERVICE</a></h3>
-            <div class="blog_author_area"> <a href="#"><i class="fa fa-user"></i>By :  Admin</a> <a href="#"><i class="fa fa-tag"></i>Consulting</a> <a href="#"><i class="fa fa-comments-o"></i>Comments: 2</a> </div>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, </p>
-            <blockquote class="blockquote color-bg-b">
-              <p><i class="fa fa-quote-left font-28 color-w pr-10"></i>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
-            </blockquote>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna et sed aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <h3><a href="#"><?php echo $blogTitle; ?></a></h3>
+            <div class="blog_author_area"> <a href="#"><i class="fa fa-user"></i>By :  <?php echo $blogger; ?></a><a href="#"> <i class="fa fa-tag"></i><?php echo $category; ?></a><a href="#"><i class="fa fa-comments-o"></i>Comments: <?php echo $countComments; ?></a> </div>
+            <?php echo $blogBody; ?>
           </div>
-          <div class="blog_tag"> <a href="#">Service</a> <a href="#">Growth</a> <a href="#">Investment</a> <a href="#">Marketing</a> <a href="#">Idea</a> <a href="#">Finance</a> </div>
+          <!--<div class="blog_tag"> <a href="#">Service</a> <a href="#">Growth</a> <a href="#">Investment</a> <a href="#">Marketing</a> <a href="#">Idea</a> <a href="#">Finance</a> </div>
           <div class="footer-social pt-15">
             <h4 class="pb-20 font-w-8">Share</h4>
             <ul class="top-social">
@@ -126,78 +199,86 @@
               <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
               <li><a href="#" target="_blank"><i class="fa fa-rss"></i></a></li>
             </ul>
-          </div>
+          </div>-->
           <div class="clearfix"></div>
+<?php
+    while($rowComment=mysqli_fetch_array($commentsSql)){
+      $commentId=$rowComment['id'];
+      $commentBody=$rowComment['comment_body'];
+      $timeCommented=$rowComment['posted_at'];
+      $commenterId=$rowComment['user_id'];
+
+      $commenterSql=mysqli_query($con, "SELECT * FROM `users` WHERE `id`= '$commenterId'");
+      $rowCommenter=mysqli_fetch_array($commenterSql);
+      $commenter=$rowCommenter['username'];
+
+
+        $datetimeC=explode(" ", $timeCommented);
+        $dateC=$datetimeC[0];
+        $timeC=$datetimeC[1];
+        $rdateC=date('d M,Y',strtotime($dateC));
+        $rtimeC=date('H:i',strtotime($timeC));
+      ?>
+
           <div class="connent-area mt-40">
-            <div class="title">comments</div>
+            <div class="title"><?php echo $countComments; ?> comments</div>
             <div class="comment-box">
               <div class="img-box"> <img src="images/footer-post-12.jpg" class="img-responsive" alt=""> </div>
               <div class="comment-inner">
                 <div class="comment-title">
-                  <h5 class="font-w-6">Akshay Kumar</h5>
+                  <h5 class="font-w-6"><?php echo $commenter; ?></h5>
                 </div>
-                <div class="comment-time">JAN 20, 2018</div>
+                <div class="comment-time"><?php echo $rdateC." at ".$rtimeC; ?></div>
                 <div class="text">
-                  <p class="font-w-6">Dserunt mollit anim id est laborum. Sed ut perspiciatis unde omniste magna natus error voluptatem dolor
-                    mque laudantium, totam rem aperiam, eaque ipsa quae duiad ab illo inventore.</p>
+                  <p class="font-w-6"><?php echo $commentBody; ?></p>
                 </div>
               </div>
             </div>
-            <div class="comment-box ml-60">
-              <div class="img-box"> <img src="images/footer-post-12.jpg" class="img-responsive" alt=""> </div>
-              <div class="comment-inner">
-                <div class="comment-title">
-                  <h5 class="font-w-6">Akshay Kumar</h5>
-                </div>
-                <div class="comment-time">JAN 20, 2018</div>
-                <div class="text">
-                  <p class="font-w-6">Dserunt mollit anim id est laborum. Sed ut perspiciatis unde omniste magna natus error voluptatem dolor
-                    mque laudantium, totam rem aperiam, eaque ipsa quae duiad ab illo inventore.</p>
-                </div>
-              </div>
             </div>
-            <div class="comment-box">
-              <div class="img-box"> <img src="images/footer-post-12.jpg" class="img-responsive" alt=""> </div>
-              <div class="comment-inner">
-                <div class="comment-title">
-                  <h5 class="font-w-6">Akshay Kumar</h5>
-                </div>
-                <div class="comment-time">JAN 20, 2018</div>
-                <div class="text">
-                  <p class="font-w-6">Dserunt mollit anim id est laborum. Sed ut perspiciatis unde omniste magna natus error voluptatem dolor
-                    mque laudantium, totam rem aperiam, eaque ipsa quae duiad ab illo inventore.</p>
-                </div>
-              </div>
-            </div>
+
+      <?php
+    }
+  ?>
+
           </div>
           <div class="consultency_comments_form">
             <h2 class="comments_title">Leave a Reply</h2>
             <div class="row">
-              <form action="#" method="post">
-                <div class="col-md-6 col-sm-6">
+         <?php if(isset($_SESSION['username'])){ ?>
+              <form method="post" action="blog-single.php?blog_id=<?php echo $blogID; ?>" >
+                
+                <div class="col-md-12">
                   <div class="form-group">
-                    <input type="email" class="form-control" placeholder="E-mail*">
-                  </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                  <div class="form-group">
-                    <input type="url" class="form-control" placeholder="Website">
+                    <textarea name="comment_content" class="form-control" rows="4" placeholder="Your Comment"></textarea>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
-                    <textarea name="message" class="form-control" rows="4" placeholder="Your Comment"></textarea>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <div class="send_me_ph"> <a class="btn" href="#">Submit Now</a> </div>
+                    <div class="send_me_ph"> <button type="submit" name="post_comment" class="btn">Submit Now</button> </div>
                   </div>
                 </div>
               </form>
+          <?php }else{ ?>
+              <form method="post" action="blog-single.php?blog_id=<?php echo $blogID; ?>" >
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <input type="email" class="form-control" placeholder="E-mail*" name="email">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea name="comment_content" class="form-control" rows="4" placeholder="Your Comment"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <div class="send_me_ph"> <button type="submit" name="post_comment_non" class="btn">Submit Now</button> </div>
+                  </div>
+                </div>
+              </form>
+            <?php } ?>
             </div>
           </div>
-        </div>
         <!-- blog_left_side_area -->
       </div>
       <!-- col-md-8 -->

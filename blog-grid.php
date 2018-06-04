@@ -100,92 +100,60 @@
  <section id="blog-grid" class="blog-grid">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single_blog_item_area center">
-                        <a href="blog-single.php"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
-                        <ul class="meta"> 
-                                            <li>By <span class="color font-w-6">AKSH</span></li>
-                                            <li>Dated <span>1 Jan 2018</span></li>
-                                        </ul>
-                        <h3><a href="blog-single.php">Blog article with default image</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
-                    </div>
-                </div><!-- col-md-4-->
-                
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single_blog_item_area center">
-                        <a href="blog-single.php"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
-                        <ul class="meta"> 
-                                            <li>By <span class="color font-w-6">AKSH</span></li>
-                                            <li>Dated <span>1 Jan 2018</span></li>
-                                        </ul>
-                        <h3><a href="blog-single.php">Blog article with default image</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
-                    </div>
-                </div><!-- col-md-4-->
-                
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single_blog_item_area center">
-                        <a href="blog-single.php"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
-                        <ul class="meta"> 
-                                            <li>By <span class="color font-w-6">AKSH</span></li>
-                                            <li>Dated <span>1 Jan 2018</span></li>
-                                        </ul>
-                        <h3><a href="blog-single.php">Blog article with default image</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
-                    </div>
-                </div><!-- col-md-4-->
+                <?php
+        include("include/connection.php");
+        $selectSql=mysqli_query($con, "SELECT * FROM `blog_posts` ORDER BY `id` DESC");
+        $countPost=mysqli_num_rows($selectSql); 
+        if($countPost>=1){
+            while($rowPost=mysqli_fetch_array($selectSql)){
+                $blogID=$rowPost['id'];
+                $blogTitle=$rowPost['blog_title'];
+                $blogBody=$rowPost['blog_body'];
+                $timePosted=$rowPost['posted_at'];
+                $userID=$rowPost['user_id'];
+                $categoryID=$rowPost['category_id'];
+                $imagepath=$rowPost['cover_img'];
 
+                if($imagepath=="NONE" || $imagepath==""){
+                    $imagepath="cover_images/default.png";
+                }
+
+                $bloggerSql=mysqli_query($con, "SELECT * FROM `users` WHERE `id`= '$userID'");
+                $rowUser=mysqli_fetch_array($bloggerSql);
+                $blogger=$rowUser['username'];
+
+                $categorySql=mysqli_query($con, "SELECT * FROM `category` WHERE `id`= '$categoryID'");
+                $rowCategory=mysqli_fetch_array($categorySql);
+                $category=$rowCategory['category_name'];
+
+
+                $datetime=explode(" ", $timePosted);
+                $date=$datetime[0];
+                $time=$datetime[1];
+                $rdate=date('d M Y',strtotime($date));
+
+    ?>
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single_blog_item_area center">
-                        <a href="blog-single.php"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
+                        <a href="blog-single.php?blog_id=<?php echo $blogID; ?>"><img src="<?php echo $imagepath; ?>" class="img-responsive" alt="images"></a>
                         <ul class="meta"> 
-                                            <li>By <span class="color font-w-6">AKSH</span></li>
-                                            <li>Dated <span>1 Jan 2018</span></li>
+                                            <li>By <span class="color font-w-6"><?php echo $blogger; ?></span></li>
+                                            <li>Dated <span><?php echo $rdate; ?></span></li>
                                         </ul>
-                        <h3><a href="blog-single.php">Blog article with default image</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
+                        <h3><a href="blog-single.php?blog_id=<?php echo $blogID; ?>"><?php echo $blogTitle; ?></a></h3>
+                        <!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>-->
                     </div>
                 </div><!-- col-md-4-->
+                <?php
+            }
+    
+        }else{
+            echo "No blog post available";
+        }
 
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single_blog_item_area center">
-                        <a href="blog-single.php"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
-                        <ul class="meta"> 
-                                            <li>By <span class="color font-w-6">AKSH</span></li>
-                                            <li>Dated <span>1 Jan 2018</span></li>
-                                        </ul>
-                        <h3><a href="blog-single.php">Blog article with default image</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
-                    </div>
-                </div><!-- col-md-4-->
+    ?>
+                </div><!-- row -->
 
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single_blog_item_area center">
-                        <a href="blog-single.php"><img src="images/blog_grid_img_01.jpg" class="img-responsive" alt="images"></a>
-                        <ul class="meta"> 
-                                            <li>By <span class="color font-w-6">AKSH</span></li>
-                                            <li>Dated <span>1 Jan 2018</span></li>
-                                        </ul>
-                        <h3><a href="blog-single.php">Blog article with default image</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
-                    </div>
-                </div><!-- col-md-4-->
-            </div><!-- row -->
-
-            <div class="blog_pagination">
-                <nav>
-                    <ul class="pagination pagination-lg">
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        
-                        <li class="page-item"><a href="blog-grid.php">2</a></li>
-
-                        <li class="page-item">
-                            <a href="blog-grid-2.html"><i class="fa fa-arrow-right"></i></a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
         </div><!-- container -->
     </section>
 <div class="clearfix"></div>
