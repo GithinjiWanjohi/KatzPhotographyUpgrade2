@@ -46,10 +46,52 @@ include ('../connect.php');
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="../js/dropzone.js"></script>
-    <script src="../js/upload.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="../js/dropzone.js"></script>
+    <!--<script src="../js/upload.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="../dist/sweetalert.css">
+    <script src="../dist/sweetalert.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        Dropzone.options.myDropzone = {
+
+            // Prevents Dropzone from uploading dropped files immediately
+            autoProcessQueue: false,
+            addRemoveLinks:true,
+            maxFiles:50,
+            parallelUploads:50,
+            acceptedFiles: "image/jpeg, image/jpg, image/png, image/gif",
+
+            init: function() {
+                var submitButton = document.querySelector("#submit-all");
+                myDropzone = this; // closure
+
+                submitButton.addEventListener("click", function() {
+                    myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+                });
+
+                myDropzone.on('sending', function(file, xhr, formData){
+                    formData.append('userName', 'bob');
+                });
+
+                // You might want to show the submit button only when
+                // files are dropped here:
+                this.on("addedfile", function() {
+                    // Show submit button here and/or inform user to click it.
+                });
+
+                myDropzone.on("complete", function(file) {
+                    setTimeout(remove,3000);
+                    function remove () {
+                        myDropzone.removeFile(file);
+                    }
+                });
+
+            }
+        };
+    </script>
 </head>
 <body>
 <!-- Pre Loader -->
@@ -100,7 +142,7 @@ include ('../connect.php');
                 <div class="section-title ptb-10">
                     <h2 class="font-w-8 ln-h-40"><span class="color">UPLOAD</span> PHOTOS TO A  <BR>
                         SHOOT CATALOG</h2>
-                    <p class="font-w-6">Share your awesomeness with your users</p>
+                    <p class="font-w-6">Share your Awesomeness with your users</p>
                 </div>
             </div>
         </div>
@@ -114,52 +156,70 @@ include ('../connect.php');
                 <div class="outer-box">
                     <!-- Contact Form Start -->
                     <div class="form-box clearfix">
-                        <form action="upload.php" method="post" enctype="multipart/form-data" class="dropzone" id="my-dropzone"
+                        <form action="UploadClass.php" enctype="multipart/form-data" method="post" class="dropzone" id="my-dropzone"
                               style="min-height: 600px;">
                             <div class="form-group col-sm-12">
-                                <input type="text" class="form-control" id="name" placeholder="Shoot name" required data-error=" Shoot Name missing">
+                                <input type="text" class="form-control" id="shootName" name="shootName" placeholder="Shoot name" required data-error=" Shoot Name missing">
                                 <div class="help-block with-errors"></div>
                             </div>
-                            <div class="form-group col-sm-12">
-                                <select class="form-control" id="category" required data-error="Category missing">
+                            <div class="form-group col-sm-6">
+                                <select class="form-control" id="category" name="category" required data-error="Category missing">
                                     <option selected>Choose a Category</option>
                                     <?php
-                                    $sql = "SELECT * FROM categories";
+                                    $sql = "SELECT `cat_name` FROM categories";
                                     $res = $db->query($sql) or trigger_error($db->error . "[$sql]");
                                     while($row = mysqli_fetch_array($res)){
                                         $cat = $row['cat_name'];?>
                                     <option id="<?php echo $cat;?>"><?php echo $cat;?></option>
-                                    <?php }?>
+                                    <?php
+                                    }?>
                                 </select>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group col-sm-6">
-                                <input type="date" class="form-control" id="date" placeholder="Shoot Date" required data-error="Date missing">
+                                <select class="form-control" id="custDetails" name="custDetails" required data-error="Customer name missing">
+                                    <option selected>Choose a Customer</option>
+                                    <?php
+                                    $s = "SELECT `id`, `firstname`, `lastname` FROM `customers` WHERE 1";
+                                    $result = $db->query($s) or trigger_error($db->error . "[$s]");
+                                    while($row = mysqli_fetch_array($result)){
+                                        $userID = $row['id'];
+                                        $fName = $row['firstname'];
+                                        $lName = $row['lastname'];?>
+                                        <option id="<?php echo $userID;?>" value="<?php echo $userID." ".$fName." ".$lName;?>">
+                                            <?php echo $fName." ".$lName." - ".$userID;?></option>
+                                    <?php
+                                    }?>
+                                </select>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group col-sm-6">
-                                <input type="number" class="form-control" id="time" placeholder="Hours" required data-error="Hours missing">
+                                <input type="date" class="form-control" id="date" name="date" placeholder="Shoot Date" required data-error="Date missing">
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="camera" placeholder="Your Camera Body" required data-error="Camera body type missing">
+                                <input type="number" class="form-control" id="hours" name="hours" placeholder="Hours" required data-error="Hours missing">
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="lensType" placeholder="Lens type" required data-error="Lens type missing">
+                                <input type="text" class="form-control" id="camera" name="camera" placeholder="Your Camera Body" required data-error="Camera body type missing">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" id="lensType" name="lensType" placeholder="Lens type" required data-error="Lens type missing">
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group col-sm-12">
-                                <textarea id="message" class="form-control" rows="6" placeholder="Please write additional details about the shoot" required></textarea>
+                                <textarea id="details" name="details" class="form-control" rows="6" placeholder="Please write additional details about the shoot" required></textarea>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            <div class="fallback" style="position: relative">
+                            <div class="form-group fallback" style="position: relative">
                                 <input name="file" type="file" multiple />
                             </div>
+                            <div class="col-sm-12 col-md-offset-9 pt-5 fixed-bottom">
+                                <button class="btn" id="submit-all">Submit Shoot</button>
+                            </div>
                         </form>
-                        <div class="col-sm-12 col-md-offset-9 pt-5"> <a class="btn" href="#">Submit Shoot</a>
-                            <div id="msgSubmit"></div>
-                        </div>
                     </div>
                     <!-- Contact Form End -->
                 </div>
@@ -200,11 +260,9 @@ include ('../connect.php');
                 var d=new Date();
                 document.write(d.getFullYear());
             </script>
-            SWAT | All Rights Reserved.</p>
+            KATZ | All Rights Reserved.</p>
     </div>
 </footer>
-<script src="../js/dropzone.js"></script>
-<script src="../js/upload.js"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="../assets/jquery/jquery-3.2.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -222,6 +280,12 @@ include ('../connect.php');
 <script src="../assets/contact-form/js/form-scripts.js"></script>
 <script src="../assets/jquery/plugins.js"></script>
 <script src="../js/custom.js"></script>
+
+<!-- JS FILES -->
+<script src="../js/jquery.fancybox.pack.js"></script>
 </body>
 </html>
+
+<?php
+$db->close();
 

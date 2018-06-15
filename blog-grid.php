@@ -101,7 +101,7 @@
         <div class="container">
             <div class="row">
                 <?php
-        include("include/connection.php");
+        include("connection.php");
         $selectSql=mysqli_query($con, "SELECT * FROM `blog_posts` ORDER BY `id` DESC");
         $countPost=mysqli_num_rows($selectSql); 
         if($countPost>=1){
@@ -110,7 +110,7 @@
                 $blogTitle=$rowPost['blog_title'];
                 $blogBody=$rowPost['blog_body'];
                 $timePosted=$rowPost['posted_at'];
-                $userID=$rowPost['user_id'];
+                $userID=$rowPost['id'];
                 $categoryID=$rowPost['category_id'];
                 $imagepath=$rowPost['cover_img'];
 

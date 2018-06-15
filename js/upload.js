@@ -1,4 +1,3 @@
-
 Dropzone.options.myDropzone = {
 
     // Prevents Dropzone from uploading dropped files immediately
