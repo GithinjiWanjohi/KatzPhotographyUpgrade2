@@ -137,8 +137,8 @@ if(isset($_SESSION['id'])){
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title ptb-10">
-                    <h2 class="font-w-8 ln-h-40"><span class="color">POST</span> A BLOG OF A <BR>
-                        PHOTOSHOOT</h2>
+                    <h2 class="font-w-8 ln-h-40"><span class="color">CATEGORIES</span> MANAGEMENT <BR>
+                        BY ADMIN</h2>
                     <p class="font-w-6">Share your awesomeness with your users</p>
                 </div>
             </div>
