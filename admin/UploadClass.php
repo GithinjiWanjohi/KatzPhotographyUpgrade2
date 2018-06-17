@@ -107,8 +107,7 @@ class UploadClass{
             $this->uploadToPhoto();
 
             $dir_separator = DIRECTORY_SEPARATOR;
-            $root = "..";
-            $folder = "images";
+            $folder = "../images";
             $id_separator = "-";
             $userFolder = $dir_separator . $folder . $dir_separator . $this->custFName . $id_separator . $this->custId . $dir_separator . $this->categoryName . $dir_separator;
             $picFolder = $dir_separator . $folder . $dir_separator . $this->custFName . $id_separator . $this->custId . $dir_separator . $this->categoryName . $dir_separator . $this->shootName . $dir_separator;
@@ -120,15 +119,18 @@ class UploadClass{
 
             if ($_FILES["fileToUpload"]["size"] > 10000000) {
                 echo "Sorry, your file is too large.";
-            } else if (!is_dir($destination_path) || !is_dir($folder_path)) {
-                // Upload to directory
-                mkdir($destination_path);
-                mkdir($folder_path);
+            } else if (!is_dir($destination_path)){
+                // Make User directory
+                mkdir($destination_path, 0777, true);
+                chmod($userFolder, 0777);
+            } else if (!is_dir($folder_path)) {
+                mkdir($folder_path, 0777, true);
                 move_uploaded_file($this->temp, $target_path);
+                chmod($picFolder, 0777);
             } else{
                 move_uploaded_file($this->temp, $target_path);
+                chmod($target_path, 0777, true);
             }
-            return true;
         }
 
 

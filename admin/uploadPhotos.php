@@ -103,7 +103,7 @@ include ('../connect.php');
             <div class="row">
                 <div class="col-md-3">
                     <!-- START LOGO -->
-                    <div class="logo"> <a href="../index-9.php">KATZ ADMIN</a> </div>
+                    <div class="logo"> <a href="../index.php">KATZ ADMIN</a> </div>
                     <!-- END LOGO -->
                     <div class="mobile-nav"></div>
                 </div>
@@ -116,7 +116,7 @@ include ('../connect.php');
                         <div class="collapse navbar-collapse">
                             <div class="navigation">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="../index-9.php">Upload</a></li>
+                                    <li><a href="../index.php">Upload</a></li>
                                     <li><a href="#"><i class="fa fa-user fa-2x"></i></a>
                                         <ul class="drop-down" >
                                             <li><a href="../signIn.php">Sign In</a></li>
@@ -156,70 +156,72 @@ include ('../connect.php');
                 <div class="outer-box">
                     <!-- Contact Form Start -->
                     <div class="form-box clearfix">
-                        <form action="UploadClass.php" enctype="multipart/form-data" method="post" class="dropzone" id="my-dropzone"
-                              style="min-height: 600px;">
-                            <div class="form-group col-sm-12">
-                                <input type="text" class="form-control" id="shootName" name="shootName" placeholder="Shoot name" required data-error=" Shoot Name missing">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <select class="form-control" id="category" name="category" required data-error="Category missing">
-                                    <option selected>Choose a Category</option>
-                                    <?php
-                                    $sql = "SELECT `cat_name` FROM categories";
-                                    $res = $db->query($sql) or trigger_error($db->error . "[$sql]");
-                                    while($row = mysqli_fetch_array($res)){
-                                        $cat = $row['cat_name'];?>
-                                    <option id="<?php echo $cat;?>"><?php echo $cat;?></option>
-                                    <?php
-                                    }?>
-                                </select>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <select class="form-control" id="custDetails" name="custDetails" required data-error="Customer name missing">
-                                    <option selected>Choose a Customer</option>
-                                    <?php
-                                    $s = "SELECT `id`, `firstname`, `lastname` FROM `customers` WHERE 1";
-                                    $result = $db->query($s) or trigger_error($db->error . "[$s]");
-                                    while($row = mysqli_fetch_array($result)){
-                                        $userID = $row['id'];
-                                        $fName = $row['firstname'];
-                                        $lName = $row['lastname'];?>
-                                        <option id="<?php echo $userID;?>" value="<?php echo $userID." ".$fName." ".$lName;?>">
-                                            <?php echo $fName." ".$lName." - ".$userID;?></option>
-                                    <?php
-                                    }?>
-                                </select>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <input type="date" class="form-control" id="date" name="date" placeholder="Shoot Date" required data-error="Date missing">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <input type="number" class="form-control" id="hours" name="hours" placeholder="Hours" required data-error="Hours missing">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="camera" name="camera" placeholder="Your Camera Body" required data-error="Camera body type missing">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="lensType" name="lensType" placeholder="Lens type" required data-error="Lens type missing">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group col-sm-12">
-                                <textarea id="details" name="details" class="form-control" rows="6" placeholder="Please write additional details about the shoot" required></textarea>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group fallback" style="position: relative">
-                                <input name="file" type="file" multiple />
-                            </div>
-                            <div class="col-sm-12 col-md-offset-9 pt-5 fixed-bottom">
-                                <button class="btn" id="submit-all">Submit Shoot</button>
-                            </div>
-                        </form>
+                        <div class="row no-gutter">
+                            <form action="UploadClass.php" enctype="multipart/form-data" method="post" class="dropzone" id="my-dropzone"
+                                  style="min-height: 600px;">
+                                <div class="form-group col-sm-12">
+                                    <input type="text" class="form-control" id="shootName" name="shootName" placeholder="Shoot name" required data-error=" Shoot Name missing">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <select class="form-control" id="category" name="category" required data-error="Category missing">
+                                        <option selected>Choose a Category</option>
+                                        <?php
+                                        $sql = "SELECT `cat_name` FROM categories";
+                                        $res = $db->query($sql) or trigger_error($db->error . "[$sql]");
+                                        while($row = mysqli_fetch_array($res)){
+                                            $cat = $row['cat_name'];?>
+                                            <option id="<?php echo $cat;?>"><?php echo $cat;?></option>
+                                            <?php
+                                        }?>
+                                    </select>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <select class="form-control" id="custDetails" name="custDetails" required data-error="Customer name missing">
+                                        <option selected>Choose a Customer</option>
+                                        <?php
+                                        $s = "SELECT `id`, `firstname`, `lastname` FROM `customers` WHERE 1";
+                                        $result = $db->query($s) or trigger_error($db->error . "[$s]");
+                                        while($row = mysqli_fetch_array($result)){
+                                            $userID = $row['id'];
+                                            $fName = $row['firstname'];
+                                            $lName = $row['lastname'];?>
+                                            <option id="<?php echo $userID;?>" value="<?php echo $userID." ".$fName." ".$lName;?>">
+                                                <?php echo $fName." ".$lName." - ".$userID;?></option>
+                                            <?php
+                                        }?>
+                                    </select>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="date" class="form-control" id="date" name="date" placeholder="Shoot Date" required data-error="Date missing">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="number" class="form-control" id="hours" name="hours" placeholder="Hours" required data-error="Hours missing">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="camera" name="camera" placeholder="Your Camera Body" required data-error="Camera body type missing">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="lensType" name="lensType" placeholder="Lens type" required data-error="Lens type missing">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <textarea id="details" name="details" class="form-control" rows="6" placeholder="Please write additional details about the shoot" required></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group fallback" style="position: relative">
+                                    <input name="file" type="file" multiple />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-12 col-md-offset-9 pt-5 fixed-bottom">
+                            <button class="btn" id="submit-all">Submit Shoot</button>
+                        </div>
                     </div>
                     <!-- Contact Form End -->
                 </div>
