@@ -1,3 +1,7 @@
+<?php
+//include 'Cart.php';
+require_once 'init.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +40,50 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+  .card{
+    margin:4px -12px;
+      -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1); 
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1); 
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);   
+}
+.card:hover{
+    box-shadow: 0px 0px 150px rgba(0,0,0,0.4);
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.1);
+}
+.rowz{
+  padding:15px 77px;
+  margin-right:-56px;
+  margin-left:-12px;
+}
+.action{
+  transition: .5s ease;
+  opacity:0;
+  position:absolute;
+  top: 53%;
+  height:66px;
+  min-width:100%;
+  background-color:white;
+  border-radius:25px;
+}
+.card:hover .action{
+ opacity:0.8;
+}
+
+  </style>
 </head>
 <body>
 <!-- Pre Loader -->
@@ -63,9 +111,11 @@
                   <li><a href="index-9.php">Home</a></li>
                   <li><a href="portfolio-three.php">Proofs</a></li>
                   <li><a href="blog-grid.php">Blogs</a></li>
-                  <li><a href="service-3.html">Shop</a></li>
+                  <li><a href="service-3.php">Shop</a></li>
+                  
                   <li><a href="about-1.php">About</a></li>
                   <li><a href="contact-us.php">Contact</a></li>
+                  <li><a href="liveart/liveartjs-master/index.html">Start Designing</a></li>
                     <li><a href="#"><i class="fa fa-user fa-2x"></i></a>
                         <ul class="drop-down" >
                             <li><a href="signIn.php">Sign In</a></li>
@@ -98,16 +148,19 @@
 <div class="clearfix"></div>
  <!-- Start service-2-section area -->
  <section id="services_3" class="services_3">
+                        <!-- Top links -->
+<?php include("toplinks.php") ?>
+<!--End top links-->
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="section-title ptb-10">
                   <h2 class="font-w-8"><span class="color">O</span>RDER ONLINE</h2>
-                  <p class="font-w-6">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</p>
+                  <p class="font-w-6">Our Fetaured Products</p>
                   </div>
-        <div class="section_3 center">
+      <!---  <div class="section_3 center">
           <!-- Single Service Start -->
-          <div class="col-md-4 col-sm-6 col-xs-12">
+         <!-- <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="item"> <i class="fa fa-desktop pt-20"></i>
               <h4>Web Design</h4>
               <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
@@ -146,8 +199,41 @@
           </div>
           <!-- Single Service End -->
           <!-- Single Service Start -->
-         
-        </div>
+         <!--
+        </div>-->
+  <div class="container text-muted">
+<div class="row rows">
+   <?php
+        //get rows query
+        $query = $db->query("SELECT * FROM Products WHERE Featured = 1");
+        if($query->num_rows > 0){ 
+            while($row = $query->fetch_assoc()){
+        ?>
+  <div class="col-md-6 col-lg-3">
+  <div class="card">
+  <div class="card-block">
+  <h3 class="card-title text-center" style="font-size:25px;color:black;"><?php echo $row['Name']; ?></h3>
+  <hr>
+  <p class="text-center" style="font-size:15px;color:black;">Ksh.<?php echo $row['UnitPrice']; ?></p>
+  </div>
+  <img src="<?php echo $row['Image']; ?>" class="card-img-bottom img-fluid" alt="<?php echo $row['Name']; ?>" style="height:277px;margin-left:25px;"/>
+   <div class="action">
+  <div class="row rowz">
+  <!--<span>&#124;</span>
+  <div class="col-md-6 col-lg-4">
+  <a href="#"><img src="bagg.svg" title="Add to Cart" alt="Shopping bag" style="height:30px;padding-left:100px;"/></a>
+  </div><span>&#124;</span>-->
+    <a href="cartAction.php?action=addToCart&id=<?php echo $row['Productid']?>" class="btn btn-success" style="height:42px;font-size:13px;color:white;">Add To Cart</a>    
+  </div>
+  </div>
+     </div>
+    </div>
+      <?php } }else{ ?>
+        <p>Product(s) not found.....</p>
+        <?php } ?>
+  </div>
+</div>
+
       </div>
     </div>
   </div>

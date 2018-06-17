@@ -5,6 +5,7 @@
  * Date: 5/28/2018
  * Time: 10:30 AM
  */
+require_once 'init.php';
 ?>
 
 <!DOCTYPE html>
@@ -47,43 +48,56 @@
 					</span>
             </div>
 
-            <form class="login100-form validate-form">
+            <form class="login100-form validate-form" action="testing.php" method="POST">
                 <div class="wrap-input100 validate-input m-b-26" data-validate="First Name is required">
                     <span class="label-input100">First Name</span>
-                    <input class="input100" type="text" name="fname" placeholder="Enter first name">
+                    <input class="input100" type="text" name="fname" id="fname" placeholder="Enter first name">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-26" data-validate="Last Name is required">
                     <span class="label-input100">Last Name</span>
-                    <input class="input100" type="text" name="lname" placeholder="Enter last name">
+                    <input class="input100" type="text" name="lname" id="lname" placeholder="Enter last name">
                     <span class="focus-input100"></span>
                 </div>
 
 
-                <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+               <!--<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
                     <span class="label-input100">Username</span>
                     <input class="input100" type="text" name="username" placeholder="Enter username">
+                    <span class="focus-input100"></span>
+                </div>-->
+
+                <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                    <span class="label-input100">Email</span>
+                    <input class="input100" type="email" name="email" id="email" placeholder="Enter email">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                    <span class="label-input100">Phone Number</span>
+                    <input class="input100" type="tel" name="pnumber" id="pnumber" placeholder="Enter phone number">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
                     <span class="label-input100">Password</span>
-                    <input class="input100" type="password" name="pass" placeholder="Enter password">
+                    <input class="input100" type="password" name="password" id="password" placeholder="Enter password">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-18" data-validate = "Retype the password you entered">
                     <span class="label-input100">Confirm Password</span>
-                    <input class="input100" type="password" name="cpass" placeholder="Enter password">
+                    <input class="input100" type="password" name="confirm" id="confirm" placeholder="Re-enter password">
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="container-login100-form-btn">
+                <!--<div class="container-login100-form-btn">
                     <button class="login100-form-btn">
-                        Register
+                        <input type="submit" value="Register" name="submit" id="submit" style="background-color:#57b846;color:white;"> 
                     </button>
-                </div>
+                </div>-->
+                <input type="submit" value="Register" class="btn btn-primary" name="submit">
 
                 <div class="flex-sb-m w-full p-b-30 pt-4">
 

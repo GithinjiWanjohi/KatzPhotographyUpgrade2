@@ -1,14 +1,21 @@
 <?php
 session_start();
-include("connection.php");
+include("connect.php");
 
-if(isset($_SESSION['username'])){
-  $userID=$_SESSION['id'];
+if(isset($_SESSION['id'])){
+  $l_userID=$_SESSION['id'];
+
+      $loginuser=mysqli_query($db, "SELECT * FROM `users` WHERE `id`= '$l_userID'");
+      $rowLoginuser=mysqli_fetch_array($loginuser);
+      $s_fname=$rowLoginuser['FirstName'];
+      $s_lname=$rowLoginuser['LastName'];
+      $s_email=$rowLoginuser['Email'];
+      $s_userLevel=$rowLoginuser['UserType'];
 }
 
 if(isset($_GET['blog_id'])){
   $blogID = $_GET['blog_id'];
-  $selectSql=mysqli_query($con, "SELECT * FROM `blog_posts` WHERE `id`= '$blogID'");
+  $selectSql=mysqli_query($db, "SELECT * FROM `blog_posts` WHERE `id`= '$blogID'");
   $rowPost=mysqli_fetch_array($selectSql);
 
   $blogID=$rowPost['id'];
@@ -23,50 +30,54 @@ if(isset($_GET['blog_id'])){
     $imagepath="cover_images/default.png";
   }
 
-  $bloggerSql=mysqli_query($con, "SELECT * FROM `users` WHERE `id`= '$userID'");
+  $bloggerSql=mysqli_query($db, "SELECT * FROM `users` WHERE `id`= '$userID'");
   $rowUser=mysqli_fetch_array($bloggerSql);
-  $blogger=$rowUser['username'];
+  $fname=$rowUser['FirstName'];
+  $lname=$rowUser['LastName'];
+  $blogger=$fname." ".$lname;
 
-  $categorySql=mysqli_query($con, "SELECT * FROM `category` WHERE `id`= '$categoryID'");
+  $categorySql=mysqli_query($db, "SELECT * FROM `categories` WHERE `cat_ID`= '$categoryID'");
   $rowCategory=mysqli_fetch_array($categorySql);
-  $category=$rowCategory['category_name'];
+  $category=$rowCategory['cat_name'];
 
   $datetime=explode(" ", $timePosted);
   $date=$datetime[0];
   $time=$datetime[1];
   $rdate=date('d M Y',strtotime($date));
 
-  $commentsSql=mysqli_query($con, "SELECT * FROM `blog_comments` WHERE `blog_id`= '$blogID' ORDER BY `id` ASC");
+  $commentsSql=mysqli_query($db, "SELECT * FROM `blog_comments` WHERE `blog_id`= '$blogID' ORDER BY `id` ASC");
   $countComments=mysqli_num_rows($commentsSql);
   
 
   if(isset($_POST['post_comment'])){
-    $comment=mysqli_real_escape_string($con, $_POST['comment_content']);
+    $comment=mysqli_real_escape_string($db, $_POST['comment_content']);
 
-    $insertSql=mysqli_query($con, "INSERT INTO `blog_comments`(`id`, `comment_body`, `posted_at`, `blog_id`, `user_id`) VALUES (NULL,'$comment',NOW(),'$blogID','$userID')");
+    $insertSql=mysqli_query($db, "INSERT INTO `blog_comments`(`id`, `comment_body`, `posted_at`, `blog_id`, `user_id`) VALUES (NULL,'$comment',NOW(),'$blogID','$l_userID')");
+    header("Refresh: 0; url=blog-single.php?blog_id=$blogID; ");
   }
   if(isset($_POST['post_comment_non'])){
-    $email=mysqli_real_escape_string($con, $_POST['email']);
-    $comment=mysqli_real_escape_string($con, $_POST['comment_content']);
+    $email=mysqli_real_escape_string($db, $_POST['email']);
+    $comment=mysqli_real_escape_string($db, $_POST['comment_content']);
 
     if($email=="" || empty($email)){
       $email="anonymous";
     }else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
       echo "enter the correct email format";
     }else{
-      $checkUserSql=mysqli_query($con, "SELECT * FROM `users` WHERE `username`= '$email'");
+      $checkUserSql=mysqli_query($db, "SELECT * FROM `users` WHERE `Email`= '$email'");
         $countUser = mysqli_num_rows($checkUserSql);
         if($countUser>0){
 
         }else{
-          $addUser=mysqli_query($con, "INSERT INTO users(id,username,password,user_level) VALUES (NULL,'$email','password','non-registered-user')");
+          $addUser=mysqli_query($db, "INSERT INTO users(`id`,`FirstName`,`LastName`,`Email`,`PhoneNumber`,`Password`,`Timestamp`,`UserType`) VALUES (NULL,'','','$email','','',NOW(),'non-registered-user')");
         }
 
       
-      $bloggerSql_non=mysqli_query($con, "SELECT * FROM `users` WHERE `username`= '$email' && `user_level`='non-registered-user'");
+      $bloggerSql_non=mysqli_query($db, "SELECT * FROM `users` WHERE `Email`= '$email' && `UserType`='non-registered-user'");
       $rowUser_non=mysqli_fetch_array($bloggerSql_non);
       $non_user_id=$rowUser_non['id'];
-      $insertSql=mysqli_query($con, "INSERT INTO `blog_comments`(`id`, `comment_body`, `posted_at`, `blog_id`, `user_id`) VALUES (NULL,'$comment',NOW(),'$blogID','$non_user_id')");      
+      $insertSql=mysqli_query($db, "INSERT INTO `blog_comments`(`id`, `comment_body`, `posted_at`, `blog_id`, `user_id`) VALUES (NULL,'$comment',NOW(),'$blogID','$non_user_id')");  
+      header("Refresh: 0; url=blog-single.php?blog_id=$blogID; ");    
     }
     
   }
@@ -208,9 +219,15 @@ if(isset($_GET['blog_id'])){
       $timeCommented=$rowComment['posted_at'];
       $commenterId=$rowComment['user_id'];
 
-      $commenterSql=mysqli_query($con, "SELECT * FROM `users` WHERE `id`= '$commenterId'");
+      $commenterSql=mysqli_query($db, "SELECT * FROM `users` WHERE `id`= '$commenterId'");
       $rowCommenter=mysqli_fetch_array($commenterSql);
-      $commenter=$rowCommenter['username'];
+      $fnamec=$rowCommenter['FirstName'];
+      $lnamec=$rowCommenter['LastName'];
+      $commenter=$fnamec." ".$lnamec;
+
+      if($fnamec=="" || $lnamec==""){
+       $commenter=$rowCommenter['Email'];        
+      }
 
 
         $datetimeC=explode(" ", $timeCommented);
@@ -244,7 +261,7 @@ if(isset($_GET['blog_id'])){
           <div class="consultency_comments_form">
             <h2 class="comments_title">Leave a Reply</h2>
             <div class="row">
-         <?php if(isset($_SESSION['username'])){ ?>
+         <?php if(isset($_SESSION['id'])){ ?>
               <form method="post" action="blog-single.php?blog_id=<?php echo $blogID; ?>" >
                 
                 <div class="col-md-12">
@@ -284,84 +301,22 @@ if(isset($_GET['blog_id'])){
       <!-- col-md-8 -->
       <div class="col-md-4">
         <div class="blog_right_side_area">
-          <div class="blog_right_widget">
-            <div class="blog_widget">
-              <form action="#" method="post" class="blog_search">
-                <input type="text" placeholder="Enter Search Keywords">
-                <div class="blog_search_btn">
-                  <input type="submit" value="">
-                </div>
-              </form>
-            </div>
-          </div>
           <!-- blog_right_widget  -->
           <div class="blog_right_widget">
             <div class="blog_widget">
               <h3 class="blog_widget_title">CATEGORIES</h3>
               <ul>
-                <li><a href="#">Business Growth</a></li>
-                <li><a href="#">Development</a></li>
-                <li><a href="#">Consulting</a></li>
-                <li><a href="#">Management</a></li>
-                <li><a href="#">Finance Management</a></li>
-                <li><a href="#">Audit & Assurance</a></li>
-                <li><a href="#">Organization</a></li>
+                <?php
+          $viewCat3 = "SELECT * FROM `categories` ORDER BY `cat_name` ASC";
+          $resultCat3 = mysqli_query($db, $viewCat3);
+
+          while($rowCat2 = mysqli_fetch_array($resultCat3)) {
+            $cat_id=$rowCat2['cat_ID'];
+            $cat_name=$rowCat2['cat_name'];
+        ?>
+                <li><a href="blog-grid.php?cat_id=<?php echo $cat_id; ?>"><?php echo $cat_name; ?></a></li>
+                <?php } ?>
               </ul>
-            </div>
-          </div>
-          <!-- blog_right_widget  -->
-          <div class="popular_news">
-            <div class="inner-title">
-              <h4>LATEST NEWS</h4>
-            </div>
-            <div class="popular-post">
-              <div class="item">
-                <h4><a href="#">5 tips for control your<br>
-                  financial investments.</a></h4>
-                <div class="post-info">January 20, 2018 </div>
-              </div>
-              <div class="item">
-                <h4><a href="#">We have higher level of<br>
-                  experience</a></h4>
-                <div class="post-info">January 20, 2018 </div>
-              </div>
-              <div class="item">
-                <h4><a href="#">Get the best quote for<br>
-                  your service</a></h4>
-                <div class="post-info">January 20, 2018 </div>
-              </div>
-            </div>
-          </div>
-          <div class="blog_right_widget">
-            <div class="blog_widget_tag">
-              <h3 class="font-w-6">TAGS</h3>
-              <ul>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Coprporate</a></li>
-                <li><a href="#">Modern</a></li>
-                <li><a href="#">Strategy</a></li>
-                <li><a href="#">Consulting</a></li>
-                <li><a href="#">Growth</a></li>
-              </ul>
-            </div>
-          </div>
-          <!-- blog_right_widget  -->
-          <div class="blog_right_widget">
-            <div class="blog_widget">
-              <h3 class="blog_widget_title">ARCHIEVE</h3>
-              <form action="#" method="post">
-                <div class="form-group">
-                  <select>
-                    <option value="Select Month"> Select Month </option>
-                    <option value="saab"> January 2018 </option>
-                    <option value="mercedes"> february 2018 </option>
-                    <option value="audi"> March 2018 </option>
-                    <option value="audi"> April 2018 </option>
-                    <option value="audi"> August 2018 </option>
-                    <option value="audi"> Dcember 2018 </option>
-                  </select>
-                </div>
-              </form>
             </div>
           </div>
           <!-- blog_right_widget  -->

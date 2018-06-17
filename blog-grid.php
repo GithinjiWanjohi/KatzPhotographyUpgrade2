@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,16 +102,28 @@
         <div class="container">
             <div class="row">
                 <?php
-        include("connection.php");
-        $selectSql=mysqli_query($con, "SELECT * FROM `blog_posts` ORDER BY `id` DESC");
-        $countPost=mysqli_num_rows($selectSql); 
+        include("connect.php");
+        if(isset($_GET['cat_id'])){
+            $s_catID=$_GET['cat_id'];
+            $selectSql=mysqli_query($db, "SELECT * FROM `blog_posts` WHERE `category_id`='$s_catID' ORDER BY `id` DESC");
+            $countPost=mysqli_num_rows($selectSql);
+
+              $s_categorySql=mysqli_query($db, "SELECT * FROM `categories` WHERE `cat_ID`= '$s_catID'");
+              $s_rowCategory=mysqli_fetch_array($s_categorySql);
+              $s_category=" for category ".$s_rowCategory['cat_name'];
+        }else{  
+            $selectSql=mysqli_query($db, "SELECT * FROM `blog_posts` ORDER BY `id` DESC");
+            $countPost=mysqli_num_rows($selectSql);
+            $s_category="";
+        }
+ 
         if($countPost>=1){
             while($rowPost=mysqli_fetch_array($selectSql)){
                 $blogID=$rowPost['id'];
                 $blogTitle=$rowPost['blog_title'];
                 $blogBody=$rowPost['blog_body'];
                 $timePosted=$rowPost['posted_at'];
-                $userID=$rowPost['id'];
+                $userID=$rowPost['user_id'];
                 $categoryID=$rowPost['category_id'];
                 $imagepath=$rowPost['cover_img'];
 
@@ -118,14 +131,15 @@
                     $imagepath="cover_images/default.png";
                 }
 
-                $bloggerSql=mysqli_query($con, "SELECT * FROM `users` WHERE `id`= '$userID'");
+                $bloggerSql=mysqli_query($db, "SELECT * FROM `users` WHERE `id`= '$userID'");
                 $rowUser=mysqli_fetch_array($bloggerSql);
-                $blogger=$rowUser['username'];
+                $fname=$rowUser['FirstName'];
+                $lname=$rowUser['LastName'];
+                $blogger=$fname." ".$lname;
 
-                $categorySql=mysqli_query($con, "SELECT * FROM `category` WHERE `id`= '$categoryID'");
+                $categorySql=mysqli_query($db, "SELECT * FROM `categories` WHERE `cat_ID`= '$categoryID'");
                 $rowCategory=mysqli_fetch_array($categorySql);
-                $category=$rowCategory['category_name'];
-
+                $category=$rowCategory['cat_name'];
 
                 $datetime=explode(" ", $timePosted);
                 $date=$datetime[0];
@@ -148,7 +162,7 @@
             }
     
         }else{
-            echo "No blog post available";
+            echo "No blog post available".$s_category;
         }
 
     ?>
