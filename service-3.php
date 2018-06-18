@@ -118,8 +118,14 @@ require_once 'init.php';
                   <li><a href="liveart/liveartjs-master/index.html">Start Designing</a></li>
                     <li><a href="#"><i class="fa fa-user fa-2x"></i></a>
                         <ul class="drop-down" >
-                            <li><a href="signIn.php">Sign In</a></li>
-                            <li><a href="signUp.php">Register</a></li>
+                            <?php
+                            include ("connect.php");
+                            if(isset($_SESSION['User'])){?>
+                                <li><a href="admin/logout.php">Log Out</a></li>
+                            <?php }else{?>
+                                <li><a href="signIn.php">Sign In</a></li>
+                                <li><a href="signUp.php">Register</a></li>
+                            <?php }?>
                         </ul> </li>
                 </ul>
               </div>

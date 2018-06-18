@@ -244,7 +244,6 @@ footer a{
 <a href="products.php">Products</a>
 <a href="users.php">Users</a>
 <a href="archived.php">Archived</a>
-<a href="account.php">My account</a>
 <ul>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo $_SESSION['User']; ?> !

@@ -28,7 +28,7 @@ $cart = new Cart;
 <br>
     <h1>View orders</h1>
 
-    <table class="table" style="color:white;">
+    <table class="table" style="color:dimgrey;">
 
     <thead>
         <tr>
