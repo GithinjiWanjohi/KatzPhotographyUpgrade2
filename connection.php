@@ -3,7 +3,7 @@
 $localhost='localhost';
 $root='root';
 $password='';
-$db='katzdb';
+$db='katzphotoz';
 
 $con=mysqli_connect($localhost, $root, $password, $db);
 

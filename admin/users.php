@@ -1,8 +1,8 @@
 <?php
-require_once '../includes/init.php';
-  if(empty($_SESSION['UserID'])){
-    header('Location: login.php');
-  }
+require_once '../init.php';
+if(empty($_SESSION['User'])){
+    header('Location: ../signIn.php');
+}
   function update_date($date){
  return date("M d, Y h:i A",strtotime($date));
 }
@@ -114,7 +114,7 @@ require_once '../includes/init.php';
     <script href="index.js"></script>
     <style>
 .start{
-  background-image:url("/copy/fruit1.jpg");
+  background-image:url("https://d1b2zzpxewkr9z.cloudfront.net/HP/Search+Hero+/search_hero_desktop.jpg");
     min-width: 100%;
     height:700px; 
     background-attachment: fixed;
@@ -247,7 +247,7 @@ footer a{
 <a href="account.php">My account</a>
 <ul>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo $_SESSION['UserID']; ?> !
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo $_SESSION['User']; ?> !
   <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -279,8 +279,8 @@ footer a{
     <?php while($user = mysqli_fetch_assoc($userquery)):?>
     <tr>
       <td>
-      <?php if($user['Email'] != $_SESSION['UserID']):?>
-       <a href="users.php?delete=<?php echo$user['Sessionid'];?>" class="btn btn-default btn-xs">Disable</a>
+      <?php if($user['Email'] != $_SESSION['User']):?>
+       <a href="users.php?delete=<?php echo$user['id'];?>" class="btn btn-default btn-xs">Disable</a>
       <?php endif;?>
       </td>
       <td><?php echo $user['FirstName'];?></td>

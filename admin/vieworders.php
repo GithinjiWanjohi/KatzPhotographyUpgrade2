@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/init.php';
+require_once '../init.php';
 // initialize shopping cart class 
 include '../cart.php';
 $cart = new Cart;

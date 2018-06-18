@@ -1,8 +1,8 @@
 <?php 
-require_once '../includes/init.php';
-  if(empty($_SESSION['Sessionid'])){
-    header('Location: login.php');
-  }
+require_once '../init.php';
+if(empty($_SESSION['User'])){
+    header('Location: ../signIn.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -145,12 +145,15 @@ footer a{
 <a href="products.php">Products</a>
 <a href="users.php">Users</a>
 <a href="archived.php">Archived</a>
+<a href="uploadPhotos.php"> Upload Photos</a>
+<a href="blogging.php">New Blog</a>
+    <a href="category.php">Photoshoot Categories</a>
 
 <a href="vieworders.php">View Orders</a>
 
 <ul>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo $_SESSION['UserID']; ?> !
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo $_SESSION['Sessionid']; ?> !
   <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -196,7 +199,7 @@ footer a{
 <div class="med">
 <div class="row">
 <div class="col-lg-3 col-md-4 col-sm-6">
- <a href=#><img src="/copy/instagram.png" alt="Instagram" style="height:67px;padding:4px 0px;"/></a>
+ <a href=#><img src="../admin/copy/instagram.png" alt="Instagram" style="height:67px;padding:4px 0px;"/></a>
 </div>
 <div class="col-lg-3 col-md-4 col-sm-6">
 <a href=#><img src="/copy/twitter.png" alt="Twitter" style="height:67px;padding:4px 20px;"/></a>

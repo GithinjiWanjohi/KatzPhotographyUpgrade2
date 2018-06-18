@@ -66,10 +66,16 @@ class UploadClass{
 
         $this->getCategoryID();
 
-        /*Insert folder details into shoot table*/
-        $sq = "INSERT INTO `shoot`(`shoot_id`, `cat_ID`, `cust_id`, `shootName`, `hours`, `details`, `created_on`)
+        $sql = "SELECT * FROM shoot WHERE shootName = '$this->shootName'";
+        $res = $db->query($sql) or trigger_error($db->error . "[$sql]");
+        $row = $res->fetch_array();
+
+        if($row == false){
+            /*Insert folder details into shoot table*/
+            $sq = "INSERT INTO `shoot`(`shoot_id`, `cat_ID`, `cust_id`, `shootName`, `hours`, `details`, `created_on`)
             VALUES(NULL, '$this->categoryID', '$this->custId','$this->shootName', '$this->hours','$this->details', '$this->currDateTime')";
-        $rslt = $db->query($sq) or trigger_error($db->error."[$sq]");
+            $rslt = $db->query($sq) or trigger_error($db->error."[$sq]");
+        }
     }
 
     function getShootID(){

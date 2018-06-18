@@ -1,7 +1,7 @@
 <?php
-require_once '../includes/init.php';
-  if(empty($_SESSION['UserID'])){
-    header('Location: login.php');
+require_once '../init.php';
+  if(empty($_SESSION['User'])){
+    header('Location: ../signIn.php');
   }
   if(isset($_GET['restore'])) {
   $idz = sanitize($_GET['restore']);
@@ -156,7 +156,7 @@ footer a{
 <?php //endif; ?>
 <ul>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo $_SESSION['UserID']; ?> !
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo $_SESSION['User']; ?> !
   <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">

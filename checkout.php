@@ -1,7 +1,7 @@
 <?php 
 // include database configuration file
 include 'init.php';
-  if(empty($_SESSION['UserID'])){
+  if(empty($_SESSION['User'])){
     header('Location: signIn.php');
   }
 // initialize shopping cart class

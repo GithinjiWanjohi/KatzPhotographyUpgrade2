@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/init.php';
+require_once '../init.php';
 $fname = ((isset($_POST['fname']))?sanitize($_POST['fname']):'');
 $lname = ((isset($_POST['lname']))?sanitize($_POST['lname']):''); 
 $email = ((isset($_POST['email']))?sanitize($_POST['email']):'');

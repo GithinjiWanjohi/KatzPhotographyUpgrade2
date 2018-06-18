@@ -35,7 +35,7 @@ else{
 		$data=mysqli_fetch_assoc($user);
 		$Type=$data['UserType'];
 		if($Type=="admin" || $Type=="agent"){
-			$_SESSION['Sessionid']=$email;
+			$_SESSION['User']=$email;
       ?>
       <script>
       swal({
@@ -60,7 +60,7 @@ else{
       swal("Great job","You just logged in.","success");
      </script>
      <?php
-	   header("Location: /katzphotoz/index.php");
+	   header("Location: index.php");
    }
    }}}
   ?>

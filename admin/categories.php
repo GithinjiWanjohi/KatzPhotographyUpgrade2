@@ -1,8 +1,8 @@
 <?php
-require_once '../includes/init.php';
-  if(empty($_SESSION['UserID'])){
-    header('Location: login.php');
-  }
+require_once '../init.php';
+if(empty($_SESSION['User'])){
+    header('Location: ../signIn.php');
+}
 $sql = "SELECT * FROM Category WHERE Parent = 0";
 $result = $db->query($sql);
 $category = '';
@@ -86,7 +86,8 @@ $parent_value = $edit_category['Parent'];
 
     <style>
 .start{
-  background-image:url("https://d1b2zzpxewkr9z.cloudfront.net/HP/Search+Hero+/search_hero_desktop.jpg");
+  background-image:url(
+  "https://d1b2zzpxewkr9z.cloudfront.net/HP/Search+Hero+/search_hero_desktop.jpg");
     min-width: 100%;
     height:700px; 
     background-attachment: fixed;
@@ -218,7 +219,7 @@ footer a{
 <a href="archived.php">Archived</a>
 <ul>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo $_SESSION['UserID']; ?> !
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo $_SESSION['User']; ?> !
   <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">

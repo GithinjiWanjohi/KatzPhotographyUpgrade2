@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="3908b5eb-fd43-4e08-b345-ad4639fae352" name="localhost (1)" url="http://localhost/KatzPhotographyUpgrade">
-        <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\KatzPhotographyUpgrade" accessType="MOUNT" />
+      <webServer id="3908b5eb-fd43-4e08-b345-ad4639fae352" name="localhost (1)" url="http://localhost/KatzPhotographyUpgrade2">
+        <fileTransfer port="0" mountedRoot="$PROJECT_DIR$" accessType="MOUNT" />
       </webServer>
     </option>
   </component>

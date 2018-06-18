@@ -15,7 +15,7 @@ $cart_id = '';
 
 if(isset($_SESSION['User'])){
 	$user_id = $_SESSION['User'];
-  $query = $db->query("SELECT * FROM Users WHERE Sessionid = '$user_id'");
+  $query = $db->query("SELECT * FROM Users WHERE id = '$user_id'");
   $user_data = mysqli_fetch_assoc($query);
 }
 

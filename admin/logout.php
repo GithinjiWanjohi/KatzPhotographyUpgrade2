@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/init.php';
+require_once '../init.php';
 unset($_SESSION['User']);
-header('Location: login.php');
+header('Location: ../signIn.php');
 ?>

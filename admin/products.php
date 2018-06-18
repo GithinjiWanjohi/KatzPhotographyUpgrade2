@@ -1,8 +1,8 @@
 <?php
-require_once '../includes/init.php';
-  if(empty($_SESSION['UserID'])){
-    header('Location: login.php');
-  }
+require_once '../init.php';
+if(empty($_SESSION['User'])){
+    header('Location: ../signIn.php');
+}
 $dbpath = '';
 //Delete Product
 if(isset($_GET['delete'])){
@@ -39,7 +39,7 @@ if(isset($_GET['featured'])){
     
     <style>
 .start{
-  background-image:url("/copy/fruit1.jpg");
+  background-image:url("https://d1b2zzpxewkr9z.cloudfront.net/HP/Search+Hero+/search_hero_desktop.jpg");
     min-width: 100%;
     height:700px; 
     background-attachment: fixed;
@@ -172,7 +172,7 @@ footer a{
 <a href="vieworders.php">View Orders</a>
 <ul>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo $_SESSION['UserID']; ?> !
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo $_SESSION['User']; ?> !
   <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">

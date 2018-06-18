@@ -4,7 +4,7 @@
         die ("Could not connect to database" . mysqli_connect_error());
     }
 
-	mysqli_select_db($db,'katzdb') or die('Error selecting database : ' . mysql_error());
+	mysqli_select_db($db,'katzphotoz') or die('Error selecting database : ' . mysqli_error());
 
 
 

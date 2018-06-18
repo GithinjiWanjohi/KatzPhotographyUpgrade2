@@ -1,5 +1,5 @@
 <?php  
-require_once '../includes/init.php'; 
+require_once '../init.php';
 /*$password = 'messi';
 $hashed = password_hash($password,PASSWORD_DEFAULT);
 echo $hashed;*/

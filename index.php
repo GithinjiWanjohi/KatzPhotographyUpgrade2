@@ -47,7 +47,7 @@
       <div class="row">
         <div class="col-md-3">
           <!-- START LOGO -->
-          <div class="logo"> <a href="index-9.php">KATZ</a> </div>
+          <div class="logo"> <a href="index.php">KATZ</a> </div>
           <!-- END LOGO -->
           <div class="mobile-nav"></div>
         </div>
@@ -60,7 +60,7 @@
             <div class="collapse navbar-collapse">
               <div class="navigation">
                 <ul class="nav navbar-nav">
-                  <li><a href="index-9.php">Home</a></li>
+                  <li><a href="index.php">Home</a></li>
                   <li><a href="portfolio-three.php">Proofs</a></li>
                   <li><a href="blog-grid.php">Blogs</a></li>
                   <li><a href="service-3.php">Shop</a></li>
@@ -92,8 +92,12 @@
               <h1 class="font-w-8 font-30 ltr-s-1 pb-10 color-w">Art. <span class="color">Moments.</span> Story Telling</h1>
               <h3 class="font-w-8 font-55 ln-h-70 color-w">Your <span class="color">Kenyan</span> Photography <br>
                 Award <span class="color">Winner</span></h3>
-              <p class="font-w-6 color-w ln-h-30 font-14 pb-20">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution </p>
-              <a href="#contactus" class="btn smoth-scroll">Contact us</a> </div>
+              <p class="font-w-6 color-w ln-h-30 font-14 pb-20">
+                  Katz Photography is all about enabling you to relive your cherishable moments.
+                  We will be there to help you document each moment and provide high quality prints and proofs
+                  for you to keep. Ours is only to capture the memories that you create.
+              </p>
+              <a href="contact-us.php" class="btn smoth-scroll">Contact us</a> </div>
           </div>
         </div>
       </div>
@@ -109,44 +113,68 @@
         <div class="section-title ptb-10">
           <h2 class="font-w-8 ln-h-40"><span class="color">THE</span> BEST EXPERIENCE <BR>
             FROM THE EXPERTS</h2>
-          <p class="font-w-6">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</p>
+          <p class="font-w-6">We practise everyday, edging closer to perfection</p>
         </div>
         <div class="section_3 center">
           <!-- Single Service Start -->
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="item"> <i class="fa fa-camera-retro pt-20"></i>
                     <h4>Photography</h4>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
+                    <p>
+                        The camera is our eye and we will make sure we document every moment worth
+                        remembering that we see.
+                    </p>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="item"> <i class="fa fa-film pt-20"></i>
                     <h4>Cinematography</h4>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
+                    <p>
+                        Make your moments into a movie. Professionally edited and in 4K resolution.
+                        Bringing that Hollywood feel to you.
+                    </p>
                 </div>
             </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="item"> <i class="fa fa-desktop pt-20"></i>
-              <h4>Blogs</h4>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
-            </div>
+              <a href="blog-grid.php">
+                  <div class="item"> <i class="fa fa-desktop pt-20"></i>
+                      <h4>Blogs</h4>
+                      <p>
+                          We share our thoughts and experiences in the industry.
+                          Some helpful tips may lie therein that would help amatuer photographers
+                          make their grind better.<br>
+                      </p>
+                  </div>
+              </a>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="item"> <i class="fa fa-shopping-cart pt-20"></i>
               <h4>Merchandising</h4>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
+              <p>
+                  Click to visit our store and get yourself some merch.<br>
+                  We promise that you'll find something that suits your taste
+              </p>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="item"> <i class="fa fa-youtube pt-20"></i>
-              <h4>Youtube Tutorials</h4>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
-            </div>
+              <a href="https://www.youtube.com">
+                  <div class="item"> <i class="fa fa-youtube pt-20"></i>
+                      <h4>Youtube Tutorials</h4>
+                      <p>
+                          Click to see some of our free tutorials and vlogs.
+                          Some of our work is highlighted here to enable you get a visual view of what we do.
+                      </p>
+                  </div>
+              </a>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="item"> <i class="fa fa-briefcase pt-20"></i>
               <h4>Photography School</h4>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.</p>
+              <p>
+                  Because we love sharing knowledge 🧠 😎
+                  Take sometime to view and book one of our premium classes to move you from an amature
+                  photographer/cinematographer to becoming a PRO!
+              </p>
             </div>
           </div>
           <!-- Single Service End -->
@@ -179,22 +207,38 @@
       <div class="col-md-12">
         <div class="col-md-6 pt-20">
           <h2 class="font-w-8 ptb-20 txt-lft"><span class="color">WhAT </span>WE DO</h2>
-          <p class="font-w-6 txt-lft ln-h-23 pb-20">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words</p>
+          <p class="font-w-6 txt-lft ln-h-23 pb-20">
+              Create. Not for the money. Not for the fame. Not for the recognition.
+              But for the pure joy of creating something and sharing it. <br>
+              We want to be with you in all of your life
+              moments - From before you are born and when you crawl, when you find love.
+          </p>
           <div class="col-md-6 pb-25">
-            <h3 class="font-20"><span class="color font-w-8 font-26 pr-10">01</span>Wedding Shoots</h3>
-            <p class="font-14 font-w-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+            <h3 class="font-20"><span class="color font-w-8 font-26 pr-10">1</span>Wedding Shoots👰🏽🤵🏽</h3>
+            <p class="font-14 font-w-2">
+                Helping you recreate your memorable day. With you all the way
+            </p>
           </div>
           <div class="col-md-6 pb-25">
-            <h3 class="font-20"><span class="color font-w-8 font-26 pr-10">01</span>Family Photography</h3>
-            <p class="font-14 font-w-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+            <h3 class="font-20"><span class="color font-w-8 font-26 pr-10">1</span>Family Photography👨‍👨‍👧‍👦</h3>
+            <p class="font-14 font-w-2">
+                We love family. We love togetherness. We love unity.
+                We will help show all of these in your shots
+            </p>
           </div>
           <div class="col-md-6">
-            <h3 class="font-20"><span class="color font-w-8 font-26 pr-10">01</span>Engagement Shoots</h3>
-            <p class="font-14 font-w-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+            <h3 class="font-20"><span class="color font-w-8 font-26 pr-10">1</span>Engagement Shoots💍</h3>
+            <p class="font-14 font-w-2">
+                Showcasing your love is more than just the ring.
+                Bring us along to help record as she says YES
+            </p>
           </div>
           <div class="col-md-6">
-            <h3 class="font-20"><span class="color font-w-8 font-26 pr-10">01</span>Baby Bump Shoots</h3>
-            <p class="font-14 font-w-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+            <h3 class="font-20"><span class="color font-w-8 font-26 pr-10">1</span>Baby Bump Shoots🤰🏽</h3>
+            <p class="font-14 font-w-2">
+                New baby on the way?<br>
+                We got you. Let us help showcase that pregnancy glow.
+            </p>
           </div>
         </div>
         <div class="col-md-6"> <img src="images/men-2.png" class="img-responsive" alt=""> </div>
@@ -211,7 +255,7 @@
       <div class="col-md-12">
         <div class="video-content">
           <h2 class="font-w-8">Video Snippet of our photography class</h2>
-          <h4 class="color-w font-w-6 pt-15">We are trying to give you the best experience you ever had.</h4>
+          <h4 class="color-w font-w-6 pt-15">We're trying to give you the best experience you ever had.</h4>
           <div class="video-holder pt-20">
             <div class="icon-sec"> <a class="popup-video" href="images/video/video.mp4"> <img src="images/play-button-img.png" alt=""> </a> </div>
           </div>
@@ -228,7 +272,7 @@
       <div class="col-md-12">
         <div class="section-title  ptb-20">
           <h2 class="font-w-8 txt-lft"><span class="color">O</span>UR Client Portfolio</h2>
-          <p class="font-w-6 txt-lft">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</p>
+          <p class="font-w-6 txt-lft">They trust us. Why won't you?</p>
         </div>
       </div>
     </div>

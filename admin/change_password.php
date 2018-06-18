@@ -1,7 +1,7 @@
 <?php  
-require_once '../includes/init.php';
-  if(empty($_SESSION['UserID'])){
-    header('Location: login.php');
+require_once '../init.php';
+if(empty($_SESSION['User'])){
+    header('Location: ../signIn.php');
 }
 $user_id = $_SESSION['UserID'];
 $query = $db->query("SELECT * FROM Users WHERE Email = '$user_id'");

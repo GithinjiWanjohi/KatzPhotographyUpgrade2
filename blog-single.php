@@ -2,15 +2,16 @@
 session_start();
 include("connect.php");
 
-if(isset($_SESSION['id'])){
-  $l_userID=$_SESSION['id'];
+if(isset($_SESSION['User'])){
+    $email = $_SESSION['User'];
 
-      $loginuser=mysqli_query($db, "SELECT * FROM `users` WHERE `id`= '$l_userID'");
-      $rowLoginuser=mysqli_fetch_array($loginuser);
-      $s_fname=$rowLoginuser['FirstName'];
-      $s_lname=$rowLoginuser['LastName'];
-      $s_email=$rowLoginuser['Email'];
-      $s_userLevel=$rowLoginuser['UserType'];
+    $loginuser=mysqli_query($db, "SELECT * FROM `users` WHERE `Email`= '$email'");
+    $rowLoginuser=mysqli_fetch_array($loginuser);
+    $s_fname=$rowLoginuser['FirstName'];
+    $s_lname=$rowLoginuser['LastName'];
+    $s_email=$rowLoginuser['Email'];
+    $s_userLevel=$rowLoginuser['UserType'];
+    $l_userID = $rowLoginuser['id'];
 }
 
 if(isset($_GET['blog_id'])){
@@ -27,7 +28,7 @@ if(isset($_GET['blog_id'])){
   $imagepath=$rowPost['cover_img'];
 
   if($imagepath=="NONE" || $imagepath==""){
-    $imagepath="cover_images/default.png";
+    $imagepath="default.png";
   }
 
   $bloggerSql=mysqli_query($db, "SELECT * FROM `users` WHERE `id`= '$userID'");
@@ -136,7 +137,7 @@ if(isset($_GET['blog_id'])){
       <div class="row">
         <div class="col-md-3">
           <!-- START LOGO -->
-          <div class="logo"> <a href="index-9.php">KATZ</a> </div>
+          <div class="logo"> <a href="index.php">KATZ</a> </div>
           <!-- END LOGO -->
           <div class="mobile-nav"></div>
         </div>
@@ -149,7 +150,7 @@ if(isset($_GET['blog_id'])){
             <div class="collapse navbar-collapse">
               <div class="navigation">
                 <ul class="nav navbar-nav">
-                  <li><a href="index-9.php">Home</a></li>
+                  <li><a href="index.php">Home</a></li>
                   <li><a href="portfolio-three.php">Proofs</a></li>
                   <li><a href="blog-grid.php">Blogs</a></li>
                   <li><a href="service-3.php">Shop</a></li>
@@ -261,7 +262,7 @@ if(isset($_GET['blog_id'])){
           <div class="consultency_comments_form">
             <h2 class="comments_title">Leave a Reply</h2>
             <div class="row">
-         <?php if(isset($_SESSION['id'])){ ?>
+         <?php if(isset($_SESSION['User'])){ ?>
               <form method="post" action="blog-single.php?blog_id=<?php echo $blogID; ?>" >
                 
                 <div class="col-md-12">

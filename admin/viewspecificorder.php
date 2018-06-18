@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/init.php';
+require_once '../init.php';
 // initializ shopping cart class 
 include '../cart.php';
 $cart = new Cart;
@@ -9,7 +9,7 @@ if($_REQUEST['action'] == 'vieworderItem' && !empty($_REQUEST['id'])){
 
 }
 else{
-        header("Location: index.php");
+        header("Location: ../service-3.php");
     }
 ?>
 <!DOCTYPE html>

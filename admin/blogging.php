@@ -10,15 +10,16 @@ session_start();
 
 include ('../connect.php');
 
-if(isset($_SESSION['id'])){
-    $l_userID=$_SESSION['id'];
+if(isset($_SESSION['User'])){
+    $email = $_SESSION['User'];
 
-      $loginuser=mysqli_query($db, "SELECT * FROM `users` WHERE `id`= '$l_userID'");
+      $loginuser=mysqli_query($db, "SELECT * FROM `users` WHERE `Email`= '$email'");
       $rowLoginuser=mysqli_fetch_array($loginuser);
       $s_fname=$rowLoginuser['FirstName'];
       $s_lname=$rowLoginuser['LastName'];
       $s_email=$rowLoginuser['Email'];
       $s_userLevel=$rowLoginuser['UserType'];
+      $l_userID = $rowLoginuser['id'];
 
         if(isset($_POST['post_blog'])){
             $title=mysqli_real_escape_string($db, $_POST['blog_title']);
@@ -95,7 +96,9 @@ if(isset($_SESSION['id'])){
                 }
             }
         }
-    }
+    }else {
+    echo "Error";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -151,7 +154,7 @@ if(isset($_SESSION['id'])){
             <div class="row">
                 <div class="col-md-3">
                     <!-- START LOGO -->
-                    <div class="logo"> <a href="../index-9.php">KATZ ADMIN</a> </div>
+                    <div class="logo"> <a href="../index.php">KATZ ADMIN</a> </div>
                     <!-- END LOGO -->
                     <div class="mobile-nav"></div>
                 </div>
@@ -164,7 +167,7 @@ if(isset($_SESSION['id'])){
                         <div class="collapse navbar-collapse">
                             <div class="navigation">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="../index-9.php">Upload</a></li>
+                                    <li><a href="../index.php">Upload</a></li>
                                     <li><a href="#"><i class="fa fa-user fa-2x"></i></a>
                                         <ul class="drop-down" >
                                             <li><a href="../signIn.php">Sign In</a></li>

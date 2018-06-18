@@ -48,7 +48,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <!-- START LOGO -->
-                    <div class="logo"> <a href="index-9.php">KATZ</a> </div>
+                    <div class="logo"> <a href="index.php">KATZ</a> </div>
                     <!-- END LOGO -->
                     <div class="mobile-nav"></div>
                 </div>
@@ -61,7 +61,7 @@
                         <div class="collapse navbar-collapse">
                             <div class="navigation">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="index-9.php">Home</a></li>
+                                    <li><a href="index.php">Home</a></li>
                                     <li><a href="portfolio-three.php">Proofs</a></li>
                                     <li><a href="blog-grid.php">Blogs</a></li>
                                     <li><a href="service-3.php">Shop</a></li>
@@ -128,7 +128,7 @@
                 $imagepath=$rowPost['cover_img'];
 
                 if($imagepath=="NONE" || $imagepath==""){
-                    $imagepath="cover_images/default.png";
+                    $imagepath="default.png";
                 }
 
                 $bloggerSql=mysqli_query($db, "SELECT * FROM `users` WHERE `id`= '$userID'");

@@ -1,9 +1,9 @@
 <?php  
 if(!isset($_REQUEST['id'])){
-    header("Location: index.php");
+    header("Location: service-3.php");
 }   
 include_once('OAuth.php');
-include_once('includes/init.php');
+include_once('init.php');
 
 $query = $db->query("SELECT * FROM orders WHERE id=(SELECT MAX(id) FROM orders)");
 $sql = mysqli_fetch_assoc($query);
@@ -73,7 +73,7 @@ $iframe_src->sign_request($signature_method, $consumer, $token);
 <body>
 <ul>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo $_SESSION['UserID']; ?> !
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <?php echo $_SESSION['User']; ?> !
   <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
