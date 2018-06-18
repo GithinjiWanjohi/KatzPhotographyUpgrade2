@@ -20,8 +20,6 @@ if(isset($_SESSION['id'])){
       $s_email=$rowLoginuser['Email'];
       $s_userLevel=$rowLoginuser['UserType'];
 
-    if($s_userLevel=="admin"){
-
         if(isset($_POST['post_blog'])){
             $title=mysqli_real_escape_string($db, $_POST['blog_title']);
             $content=mysqli_real_escape_string($db, $_POST['blog_content']);
@@ -97,12 +95,7 @@ if(isset($_SESSION['id'])){
                 }
             }
         }
-    }else{
-        header("Location: ../logout.php");
     }
-}else{
-    header("Location: ../logout.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
