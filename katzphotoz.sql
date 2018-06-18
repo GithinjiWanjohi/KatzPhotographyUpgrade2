@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2018 at 03:24 PM
--- Server version: 10.1.22-MariaDB
--- PHP Version: 7.1.4
+-- Generation Time: Jun 18, 2018 at 10:07 AM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,92 @@ SET time_zone = "+00:00";
 --
 -- Database: `katzphotoz`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_comments`
+--
+
+CREATE TABLE `blog_comments` (
+  `id` int(11) NOT NULL,
+  `comment_body` varchar(1000) NOT NULL,
+  `posted_at` datetime NOT NULL,
+  `blog_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `blog_comments`
+--
+
+INSERT INTO `blog_comments` (`id`, `comment_body`, `posted_at`, `blog_id`, `user_id`) VALUES
+(1, 'why', '2018-06-04 09:29:58', 1, 1),
+(2, 'good', '2018-06-16 08:54:42', 1, 1),
+(3, 'ayyeee', '2018-06-16 09:11:12', 4, 7),
+(4, 'ayee', '2018-06-16 09:39:46', 1, 1),
+(5, 'ayee', '2018-06-16 09:40:10', 3, 7),
+(6, 'ayeee', '2018-06-16 09:43:55', 3, 7),
+(7, 'ayeee', '2018-06-16 09:44:26', 1, 1),
+(8, 'trial', '2018-06-16 09:44:36', 1, 1),
+(9, 'trial with', '2018-06-16 09:46:17', 1, 7),
+(10, 'trial', '2018-06-16 09:46:44', 3, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_posts`
+--
+
+CREATE TABLE `blog_posts` (
+  `id` int(11) NOT NULL,
+  `blog_title` varchar(200) NOT NULL,
+  `blog_body` varchar(2000) NOT NULL,
+  `posted_at` datetime NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `cover_img` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `blog_posts`
+--
+
+INSERT INTO `blog_posts` (`id`, `blog_title`, `blog_body`, `posted_at`, `user_id`, `category_id`, `cover_img`) VALUES
+(1, 'trial post', '<p>trial post 1</p>\r\n', '2018-06-04 09:29:40', 1, 7, 'NONE'),
+(2, 'ayeeee123', '<p>fggggggggggggggggggg</p>\r\n', '2018-06-16 00:45:32', 7, 3, 'NONE'),
+(3, 'trial 34', '<p>hajhdkjbskjdhjbssjkdbcjkdabjkdbjkdjksdn</p>\r\n', '2018-06-16 09:00:37', 7, 2, 'NONE'),
+(4, 'trial 35', '<p>hajhdkjbskjdhjbssjkdbcjkdabjkdbjkdjksdn</p>\r\n', '2018-06-16 09:10:56', 7, 2, 'NONE'),
+(7, 'ayeeee123', '<p>jjjjjjjjjjjjjjjjj</p>\r\n', '2018-06-16 11:18:03', 7, 6, 'NONE'),
+(8, 'trial 349', '<p>12222222222222222222222</p>\r\n', '2018-06-16 11:22:55', 7, 2, 'cover_images/1529137375.jpg'),
+(9, 'trial 350', '<p>6666666666666666666666</p>\r\n', '2018-06-16 11:26:53', 7, 2, 'cover_images/1529137614.jpg'),
+(10, 'trial 351', '<p>66666666666666666</p>\r\n', '2018-06-16 11:29:25', 7, 2, 'cover_images/1529137766.jpg'),
+(11, 'trial 352', '<p>eeeeeeeeeeeeeeeeeeee</p>\r\n', '2018-06-16 11:30:16', 7, 2, 'NONE');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `cat_ID` int(11) NOT NULL,
+  `cat_name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`cat_ID`, `cat_name`, `description`) VALUES
+(2, 'Baby Bump', 'No description given'),
+(3, 'Sports Photography', NULL),
+(4, 'Product Photography', NULL),
+(5, 'Food Photography', NULL),
+(6, 'Kids', NULL),
+(7, 'Nature Photography', NULL),
+(8, 'Wedding', '');
 
 -- --------------------------------------------------------
 
@@ -199,6 +285,65 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `photo_upload`
+--
+
+CREATE TABLE `photo_upload` (
+  `photo_id` int(11) NOT NULL,
+  `shoot_id` int(11) NOT NULL,
+  `photoName` varchar(255) NOT NULL,
+  `extension` varchar(4) NOT NULL,
+  `dateTimePosted` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `photo_upload`
+--
+
+INSERT INTO `photo_upload` (`photo_id`, `shoot_id`, `photoName`, `extension`, `dateTimePosted`) VALUES
+(4, 37, 'andrzej-kryszpiniuk-222616-unsplash', 'jpg', '0000-00-00 00:00:00'),
+(5, 37, 'daniela-castro-220160-unsplash', 'jpg', '0000-00-00 00:00:00'),
+(6, 37, 'katerina-radvanska-364507-unsplash', 'jpg', '0000-00-00 00:00:00'),
+(25, 37, 'daniela-castro-220160-unsplash', 'jpg', '0000-00-00 00:00:00'),
+(26, 37, 'andrzej-kryszpiniuk-222616-unsplash', 'jpg', '0000-00-00 00:00:00'),
+(27, 62, 'IMG_8811', 'jpg', '0000-00-00 00:00:00'),
+(28, 62, 'IMG_8811-2', 'jpg', '0000-00-00 00:00:00'),
+(29, 62, 'IMG_8811', 'jpg', '0000-00-00 00:00:00'),
+(30, 62, 'IMG_8811-2', 'jpg', '0000-00-00 00:00:00'),
+(31, 37, 'katerina-radvanska-364507-unsplash', 'jpg', '0000-00-00 00:00:00'),
+(32, 37, 'andrzej-kryszpiniuk-222616-unsplash', 'jpg', '0000-00-00 00:00:00'),
+(33, 37, 'daniela-castro-220160-unsplash', 'jpg', '0000-00-00 00:00:00'),
+(34, 37, 'andrzej-kryszpiniuk-222616-unsplash', 'jpg', '0000-00-00 00:00:00'),
+(35, 37, 'IMG_8811', 'jpg', '0000-00-00 00:00:00'),
+(36, 37, 'IMG_8811-2', 'jpg', '0000-00-00 00:00:00'),
+(37, 37, '', '', '0000-00-00 00:00:00'),
+(38, 37, '', '', '0000-00-00 00:00:00'),
+(39, 37, 'IMG_8811', 'jpg', '0000-00-00 00:00:00'),
+(40, 37, 'IMG_8811-2', 'jpg', '0000-00-00 00:00:00'),
+(41, 37, '', '', '0000-00-00 00:00:00'),
+(42, 37, 'IMG_8811', 'jpg', '0000-00-00 00:00:00'),
+(43, 37, 'IMG_8811-2', 'jpg', '0000-00-00 00:00:00'),
+(44, 37, 'IMG_8811', 'jpg', '0000-00-00 00:00:00'),
+(45, 37, 'IMG_8811-2', 'jpg', '0000-00-00 00:00:00'),
+(46, 62, '', '', '0000-00-00 00:00:00'),
+(47, 62, 'IMG_8811', 'jpg', '0000-00-00 00:00:00'),
+(48, 62, 'IMG_8811-2', 'jpg', '0000-00-00 00:00:00'),
+(49, 37, '', '', '0000-00-00 00:00:00'),
+(50, 37, 'IMG_8811-2', 'jpg', '0000-00-00 00:00:00'),
+(51, 37, 'IMG_8811', 'jpg', '0000-00-00 00:00:00'),
+(52, 37, '', '', '0000-00-00 00:00:00'),
+(53, 37, 'IMG_8811', 'jpg', '0000-00-00 00:00:00'),
+(54, 37, 'IMG_8811-2', 'jpg', '0000-00-00 00:00:00'),
+(55, 37, '', '', '0000-00-00 00:00:00'),
+(56, 37, 'IMG_8811', 'jpg', '0000-00-00 00:00:00'),
+(57, 37, 'IMG_8811-2', 'jpg', '0000-00-00 00:00:00'),
+(58, 62, '', '', '0000-00-00 00:00:00'),
+(59, 62, '', '', '0000-00-00 00:00:00'),
+(60, 62, '', '', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -260,11 +405,101 @@ INSERT INTO `products` (`Productid`, `Category`, `Name`, `UnitPrice`, `Image`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `shoot`
+--
+
+CREATE TABLE `shoot` (
+  `shoot_id` int(11) NOT NULL,
+  `cat_ID` int(11) NOT NULL,
+  `cust_id` int(11) NOT NULL,
+  `shootName` varchar(255) NOT NULL,
+  `hours` int(11) NOT NULL,
+  `details` longtext NOT NULL,
+  `created_on` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `shoot`
+--
+
+INSERT INTO `shoot` (`shoot_id`, `cat_ID`, `cust_id`, `shootName`, `hours`, `details`, `created_on`) VALUES
+(7, 2, 1, 'Hey there little one', 6, '', '0000-00-00 00:00:00'),
+(8, 5, 3, 'Make your drink!', 4, '', '0000-00-00 00:00:00'),
+(9, 6, 2, 'Fun and Games', 3, '', '0000-00-00 00:00:00'),
+(10, 3, 4, 'Make your shot', 2, '', '0000-00-00 00:00:00'),
+(26, 5, 1, 'Smell the goodness', 2, 'Making you salivate.\r\nShot indoors', '0000-00-00 00:00:00'),
+(27, 5, 1, 'Smell the goodness', 2, 'Making you salivate.\r\nShot indoors', '0000-00-00 00:00:00'),
+(28, 5, 1, 'Smell the goodness', 2, 'Making you salivate.\r\nShot indoors', '0000-00-00 00:00:00'),
+(29, 5, 1, 'Smell the goodness', 2, 'Making you salivate.\r\nShot indoors', '0000-00-00 00:00:00'),
+(30, 5, 1, 'Smell the goodness', 2, 'Making you salivate.\r\nShot indoors', '0000-00-00 00:00:00'),
+(31, 5, 1, 'Smell the goodness', 2, 'Making you salivate.\r\nShot indoors', '0000-00-00 00:00:00'),
+(32, 5, 1, 'Smell the goodness', 2, 'Making you salivate.\r\nShot indoors', '0000-00-00 00:00:00'),
+(33, 5, 1, 'Smell the goodness', 2, 'Making you salivate.\r\nShot indoors', '0000-00-00 00:00:00'),
+(34, 5, 1, 'Smell the goodness', 2, 'Making you salivate.\r\nShot indoors', '0000-00-00 00:00:00'),
+(35, 5, 1, 'Smell the goodness', 2, 'Making you salivate.\r\nShot indoors', '0000-00-00 00:00:00'),
+(36, 5, 1, 'Smell the goodness', 2, 'Making you salivate.\r\nShot indoors', '0000-00-00 00:00:00'),
+(37, 7, 3, 'Into the badlands', 2, 'A road trip', '0000-00-00 00:00:00'),
+(38, 7, 3, 'Into the badlands', 2, 'A road trip', '0000-00-00 00:00:00'),
+(39, 7, 3, 'Into the badlands', 2, 'A road trip', '0000-00-00 00:00:00'),
+(40, 7, 3, 'Into the badlands', 2, 'A road trip', '0000-00-00 00:00:00'),
+(59, 7, 3, 'Into the badlands', 2, 'Exploring the world', '0000-00-00 00:00:00'),
+(60, 7, 3, 'Into the badlands', 2, 'Exploring the world', '0000-00-00 00:00:00'),
+(61, 7, 3, 'Into the badlands', 2, 'Exploring the world', '0000-00-00 00:00:00'),
+(62, 7, 3, 'A game of tones', 2, 'Blue tones', '0000-00-00 00:00:00'),
+(63, 7, 2, 'A game of tones', 2, '', '0000-00-00 00:00:00'),
+(64, 7, 2, 'A game of tones', 2, '', '0000-00-00 00:00:00'),
+(65, 7, 2, 'A game of Tones', 3, 'Blue tones', '0000-00-00 00:00:00'),
+(66, 7, 2, 'A game of Tones', 3, 'Blue tones', '0000-00-00 00:00:00'),
+(67, 7, 2, 'A game of Tones', 3, 'Blue tones', '0000-00-00 00:00:00'),
+(68, 7, 2, 'Into the badlands', 2, '', '0000-00-00 00:00:00'),
+(69, 7, 2, 'Into the badlands', 2, '', '0000-00-00 00:00:00'),
+(70, 7, 2, 'Into the badlands', 2, '', '0000-00-00 00:00:00'),
+(71, 7, 2, 'Into the badlands', 2, 'Desert', '0000-00-00 00:00:00'),
+(72, 7, 2, 'Into the badlands', 2, 'Desert', '0000-00-00 00:00:00'),
+(73, 7, 2, 'A game of tones', 2, 'Blue tones', '0000-00-00 00:00:00'),
+(74, 5, 2, 'Smell the goodness', 3, 'Savory', '0000-00-00 00:00:00'),
+(75, 5, 3, 'Smell the goodness', 1, 'Savory', '0000-00-00 00:00:00'),
+(76, 2, 3, 'Into the badlands', 6, 'hjsdbjhcsznl', '0000-00-00 00:00:00'),
+(77, 2, 3, 'Into the badlands', 6, 'hjsdbjhcsznl', '0000-00-00 00:00:00'),
+(78, 2, 2, 'Into the badlands', 6, 'baba', '0000-00-00 00:00:00'),
+(79, 2, 2, 'Into the badlands', 6, 'baba', '0000-00-00 00:00:00'),
+(80, 2, 2, 'Into the badlands', 6, 'baba', '0000-00-00 00:00:00'),
+(81, 3, 3, 'Into the badlands', 4, 'ilhjkcsjn ', '0000-00-00 00:00:00'),
+(82, 3, 3, 'Into the badlands', 4, 'ilhjkcsjn ', '0000-00-00 00:00:00'),
+(83, 3, 3, 'Into the badlands', 4, 'ilhjkcsjn ', '0000-00-00 00:00:00'),
+(84, 3, 2, 'Into the badlands', 1, 'kljbnd,s x', '0000-00-00 00:00:00'),
+(85, 3, 2, 'Into the badlands', 1, 'kljbnd,s x', '0000-00-00 00:00:00'),
+(86, 3, 2, 'Into the badlands', 1, 'kljbnd,s x', '0000-00-00 00:00:00'),
+(87, 2, 3, 'Into the badlands', 1, 'johkwn,dso', '0000-00-00 00:00:00'),
+(88, 2, 3, 'Into the badlands', 1, 'johkwn,dso', '0000-00-00 00:00:00'),
+(89, 2, 3, 'Into the badlands', 1, 'johkwn,dso', '0000-00-00 00:00:00'),
+(93, 4, 2, 'Into the badlands', 6, 'ihlkdnds nldsz', '0000-00-00 00:00:00'),
+(94, 4, 2, 'Into the badlands', 6, 'ihlkdnds nldsz', '0000-00-00 00:00:00'),
+(95, 4, 2, 'Into the badlands', 6, 'ihlkdnds nldsz', '0000-00-00 00:00:00'),
+(96, 2, 4, 'A game of Tones', 2, 'kndsa c,zx ', '0000-00-00 00:00:00'),
+(97, 2, 4, 'A game of Tones', 2, 'kndsa c,zx ', '0000-00-00 00:00:00'),
+(98, 2, 4, 'A game of Tones', 2, 'kndsa c,zx ', '0000-00-00 00:00:00'),
+(99, 3, 4, 'Into the badlands', 4, 'hgkvmb', '0000-00-00 00:00:00'),
+(100, 3, 4, 'Into the badlands', 4, 'hgkvmb', '0000-00-00 00:00:00'),
+(101, 3, 4, 'Into the badlands', 4, 'hgkvmb', '0000-00-00 00:00:00'),
+(102, 2, 3, 'Into the badlands', 1, 'viyjwhbcasdz ', '0000-00-00 00:00:00'),
+(103, 2, 3, 'Into the badlands', 1, 'viyjwhbcasdz ', '0000-00-00 00:00:00'),
+(104, 2, 3, 'Into the badlands', 1, 'viyjwhbcasdz ', '0000-00-00 00:00:00'),
+(105, 2, 1, 'Into the badlands', 2, 'hiknfw as', '0000-00-00 00:00:00'),
+(106, 2, 1, 'Into the badlands', 2, 'hiknfw as', '0000-00-00 00:00:00'),
+(107, 2, 1, 'Into the badlands', 2, 'hiknfw as', '0000-00-00 00:00:00'),
+(108, 5, 3, 'A game of Tones', 4, 'mjhguib  ijhmnhj', '0000-00-00 00:00:00'),
+(109, 5, 3, 'A game of Tones', 4, 'mjhguib  ijhmnhj', '0000-00-00 00:00:00'),
+(110, 5, 3, 'A game of Tones', 4, 'mjhguib  ijhmnhj', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
-  `Sessionid` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `FirstName` varchar(255) DEFAULT NULL,
   `LastName` varchar(255) DEFAULT NULL,
   `Email` varchar(255) DEFAULT NULL,
@@ -278,15 +513,34 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`Sessionid`, `FirstName`, `LastName`, `Email`, `PhoneNumber`, `Password`, `Timestamp`, `UserType`) VALUES
+INSERT INTO `users` (`id`, `FirstName`, `LastName`, `Email`, `PhoneNumber`, `Password`, `Timestamp`, `UserType`) VALUES
 (1, 'Abell', 'Wasike', 'abellwasike@gmail.com', 702676898, '$2y$10$OuF2rOUS1ag56E61Go.xv.At5KUN/mcEvxG5A0skicIZemkNqreS2', '2018-05-21 00:53:13', 'admin'),
 (4, 'kawhi', 'leo', 'kawhileo@gmail.com', 702675898, '$2y$10$rqBc9FOV9REuOcmB5pNt8er/JbXp5gr7euYvDWkO6C3XnyIzPCbhq', NULL, 'photographer'),
 (5, 'Cyril', 'Odhiambo', 'cyril@gmail.com', 702675898, '$2y$10$OxOODQl.TVSxBMJrkcSk3OkozRzBSiBxShrl/jn.oirTSPiYoCgiy', NULL, 'user'),
-(6, 'Tyreek', 'Hill', 'Thill@gmail.com', 709080706, '$2y$10$pWBmEV/kwETV0SzMhVDjWuwcdDMxW97DdkLzJmpsD4ejhEfKknQ86', NULL, 'user');
+(6, 'Tyreek', 'Hill', 'Thill@gmail.com', 709080706, '$2y$10$pWBmEV/kwETV0SzMhVDjWuwcdDMxW97DdkLzJmpsD4ejhEfKknQ86', NULL, 'user'),
+(7, 'wes', 'jab', 'wes@gmail.com', NULL, '1234', NULL, 'admin');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `blog_comments`
+--
+ALTER TABLE `blog_comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `blog_posts`
+--
+ALTER TABLE `blog_posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`cat_ID`);
 
 --
 -- Indexes for table `category`
@@ -315,21 +569,51 @@ ALTER TABLE `order_items`
   ADD KEY `order_id` (`order_id`);
 
 --
+-- Indexes for table `photo_upload`
+--
+ALTER TABLE `photo_upload`
+  ADD PRIMARY KEY (`photo_id`),
+  ADD KEY `shoot_id` (`shoot_id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`Productid`);
 
 --
+-- Indexes for table `shoot`
+--
+ALTER TABLE `shoot`
+  ADD PRIMARY KEY (`shoot_id`),
+  ADD KEY `cat_ID` (`cat_ID`),
+  ADD KEY `cust_id` (`cust_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`Sessionid`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `blog_comments`
+--
+ALTER TABLE `blog_comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `blog_posts`
+--
+ALTER TABLE `blog_posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `cat_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `category`
 --
@@ -351,10 +635,20 @@ ALTER TABLE `orders`
 ALTER TABLE `order_items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 --
+-- AUTO_INCREMENT for table `photo_upload`
+--
+ALTER TABLE `photo_upload`
+  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+--
+-- AUTO_INCREMENT for table `shoot`
+--
+ALTER TABLE `shoot`
+  MODIFY `shoot_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Sessionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --
@@ -364,6 +658,19 @@ ALTER TABLE `users`
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `photo_upload`
+--
+ALTER TABLE `photo_upload`
+  ADD CONSTRAINT `photo_upload_ibfk_1` FOREIGN KEY (`shoot_id`) REFERENCES `shoot` (`shoot_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `shoot`
+--
+ALTER TABLE `shoot`
+  ADD CONSTRAINT `shoot_ibfk_1` FOREIGN KEY (`cat_ID`) REFERENCES `categories` (`cat_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `shoot_ibfk_2` FOREIGN KEY (`cust_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
