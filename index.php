@@ -263,7 +263,7 @@
           <h2 class="font-w-8">Video Snippet of our photography class</h2>
           <h4 class="color-w font-w-6 pt-15">We're trying to give you the best experience you ever had.</h4>
           <div class="video-holder pt-20">
-            <div class="icon-sec"> <a class="popup-video" href="images/video/video.mp4"> <img src="images/play-button-img.png" alt=""> </a> </div>
+            <div class="icon-sec"> <a class="popup-video" href="images/video/video2.mp4"> <img src="images/play-button-img.png" alt=""> </a> </div>
           </div>
         </div>
       </div>
